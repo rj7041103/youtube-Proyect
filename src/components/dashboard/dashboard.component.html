@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+</head>
+
+
+<body class=" bg-surface">
+    <main>
+        <!--start the project-->
+        <div id="main-wrapper" class=" flex p-5 xl:pr-0">
+            <aside id="application-sidebar-brand"
+                class="hs-overlay hs-overlay-open:translate-x-0 -translate-x-full  transform hidden xl:block xl:translate-x-0 xl:end-auto xl:bottom-0 fixed xl:top-5 xl:left-auto top-0 left-0 with-vertical h-screen z-[999] shrink-0  w-[270px] shadow-md xl:rounded-md rounded-none bg-white left-sidebar   transition-all duration-300">
+                <!-- ---------------------------------- -->
+                <!-- Start Vertical Layout Sidebar -->
+                <!-- ---------------------------------- -->
+                <div class="p-4 flex justify-center items-start -mt-12">
+
+                    <a href="../" class="text-nowrap">
+                        <img src="../../assets/images/logos/youtube.svg" alt="Logo-Dark" />
+                    </a>
+
+
+                </div>
+                <div class="scroll-sidebar" data-simplebar="">
+                    <nav class=" w-full flex flex-col sidebar-nav px-4 mt-5">
+                        <ul id="sidebarnav" class="text-gray-600 text-sm">
+
+                            <li class="text-xs font-bold pb-[5px]">
+                                <i class="ti ti-dots nav-small-cap-icon text-lg hidden text-center"></i>
+                                <span class="text-xs text-gray-400 font-semibold">HOME</span>
+                            </li>
+
+                            <li class="sidebar-item">
+                                <a class="sidebar-link gap-3 py-2.5 my-1 text-base  flex items-center relative  rounded-md text-gray-500  w-full"
+                                    (click)="toggleComponentVisibility()">
+                                    <i class="pi pi-user" style="font-size: 2.5rem"></i><span>Users</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+                <!-- </aside> -->
+            </aside>
+            <div class=" w-full page-wrapper xl:px-6 px-0">
+
+                <!-- Main Content -->
+                <main class="h-full  max-w-full">
+                    <div class="container relative full-container p-0 flex flex-col gap-6">
+                        <!--  Header Start -->
+                        <header class=" bg-white flex justify-end shadow-md rounded-md w-10/12 text-sm py-4 px-6">
+
+
+                            <!-- ========== HEADER ========== -->
+
+                            <nav class=" w-ful flex items-center justify-between" aria-label="Global">
+                                <ul class="icon-nav flex items-center gap-4">
+                                    <li class="relative xl:hidden">
+                                        <a class="text-xl  icon-hover cursor-pointer text-heading" id="headerCollapse"
+                                            data-hs-overlay="#application-sidebar-brand"
+                                            aria-controls="application-sidebar-brand" aria-label="Toggle navigation"
+                                            href="javascript:void(0)">
+                                            <i class="ti ti-menu-2 relative z-1"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <div class="flex items-center gap-4">
+                                    <span href="#" class=" text-base font-medium text-slate-900"
+                                        aria-current="page">Savedra</span>
+                                    <div
+                                        class="hs-dropdown relative inline-flex [--placement:bottom-right] sm:[--trigger:hover]">
+                                        <a class="relative hs-dropdown-toggle cursor-pointer align-middle rounded-full">
+                                            <img class="object-cover w-9 h-9 rounded-full"
+                                                src="../../assets/images/profile/user-1.jpg" alt="" aria-hidden="true">
+                                        </a>
+                                        <div class="card hs-dropdown-menu transition-[opacity,margin] rounded-md duration hs-dropdown-open:opacity-100 opacity-0 mt-2 min-w-max  w-[200px] hidden z-[12]"
+                                            aria-labelledby="hs-dropdown-custom-icon-trigger">
+                                            <div class="card-body p-0 py-2">
+                                                <a href="javscript:void(0)"
+                                                    class="flex gap-2 items-center font-medium px-4 py-1.5 hover:bg-gray-200 text-gray-400">
+                                                    <i class="ti ti-user  text-xl "></i>
+                                                    <p class="text-sm ">My Profile</p>
+                                                </a>
+
+                                                <div class="px-4 mt-[7px] grid">
+                                                    <a [routerLink]="['/login']" routerLinkActive="router-link-active"
+                                                        class="btn-outline-primary font-medium text-[15px] w-full hover:bg-blue-600 hover:text-white">Logout</a>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </nav>
+
+                            <!-- ========== END HEADER ========== -->
+                        </header>
+
+                        <div class="flex h-auto  justify-start items-center p-3  ">
+
+                            @if(showComponent){
+                            <p-table #dt [value]="customers" dataKey="id" [rowHover]="true" [rows]="1"
+                                [showCurrentPageReport]="true" [rowsPerPageOptions]="[5, 10,20]" [loading]="loading"
+                                [paginator]="true" [filterDelay]="0" [globalFilterFields]="['name', 'lastname', 'city']"
+                                class="w-10/12">
+
+
+                                <ng-template pTemplate="header">
+
+                                    <tr>
+                                        <th pSortableColumn="avatar" style="min-width: 14rem">
+                                            <div class="flex justify-content-between align-items-center">
+                                                Avatar
+                                            </div>
+                                        </th>
+                                        <th pSortableColumn="name" style="min-width: 14rem">
+                                            <div class="flex justify-content-between align-items-center">
+                                                Name
+
+                                            </div>
+                                        </th>
+                                        <th pSortableColumn="lastname" style="min-width: 14rem">
+                                            <div class="flex justify-content-between align-items-center">
+                                                Lastname
+
+                                            </div>
+                                        </th>
+
+                                        <th style=" min-width: 10rem">
+                                            <div class="flex justify-content-between align-items-center">
+                                                DNI
+                                            </div>
+                                        </th>
+
+                                        <th style=" min-width: 10rem">
+                                            <div class="flex justify-content-between align-items-center">
+                                                Email
+                                            </div>
+                                        </th>
+                                        <th pSortableColumn="phone" style="min-width: 10rem">
+                                            <div class="flex justify-content-between align-items-center">
+                                                Phone
+                                            </div>
+                                        </th>
+                                        <th style=" min-width: 10rem">
+                                            <div class="flex justify-content-between align-items-center">
+                                                State
+                                            </div>
+                                        </th>
+                                        <th style=" min-width: 10rem">
+                                            <div class="flex justify-content-between align-items-center">
+                                                City
+                                            </div>
+                                        </th>
+                                        <th style=" min-width: 10rem">
+                                            <div class="flex justify-content-between align-items-center">
+                                                Address
+                                            </div>
+                                        </th>
+
+                                        <th pSortableColumn="status" style="min-width: 10rem">
+                                            <div class="flex justify-content-between align-items-center">
+                                                Status
+                                            </div>
+                                        </th>
+                                        <th style="width: 5rem"></th>
+                                    </tr>
+                                </ng-template>
+
+                                <ng-template pTemplate="body" let-customer>
+
+
+                                    <tr *ngFor="let customer of customers; trackBy: trackCustomer "
+                                        class="p-selectable-row" [id]="customer?.id">
+                                        <td>
+                                            <p-avatar [image]="customer?.img" styleClass="mr-2" size="xlarge"
+                                                shape="circle"></p-avatar>
+                                        </td>
+                                        <td>
+                                            {{ customer?.name ?? 'No Name' }}
+                                        </td>
+                                        <td>
+                                            <span class="ml-1 vertical-align-middle">{{ customer?.lastname ?? 'No
+                                                lastname' }}</span>
+                                        </td>
+                                        <td>
+                                            <span class="ml-1 vertical-align-middle">{{ customer?.dni ?? 'No dni'
+                                                }}</span>
+                                        </td>
+                                        <td>
+                                            <span class="ml-1 vertical-align-middle">{{ customer?.email ?? 'No email'
+                                                }}</span>
+
+                                        </td>
+                                        <td>
+                                            <span class="ml-1 vertical-align-middle">{{ customer?.phone ?? 'No phone'
+                                                }}</span>
+
+                                        </td>
+                                        <td>
+                                            <span class="ml-1 vertical-align-middle">{{ customer?.state ?? 'No state'
+                                                }}</span>
+
+                                        </td>
+                                        <td>
+                                            <span class="ml-1 vertical-align-middle">{{ customer?.city ?? 'No city'
+                                                }}</span>
+
+                                        </td>
+                                        <td>
+                                            <span class="ml-1 vertical-align-middle"> {{ customer?.address ?? 'No
+                                                addres' }}</span>
+
+                                        </td>
+
+                                        <td>
+                                            <span class="p-column-title">Status</span>
+                                            <p-tag [value]="customer?.status"
+                                                [severity]="getSeverity(customer.status)"></p-tag>
+                                        </td>
+                                    </tr>
+
+                                </ng-template>
+                                <ng-template pTemplate="emptymessage">
+                                    <tr>
+                                        <td colspan="8">No customers found.</td>
+                                    </tr>
+                                </ng-template>
+                            </p-table>
+                            }
+
+                        </div>
+                        <footer>
+                            <p class="text-base text-gray-400 font-normal p-3 text-center">
+                                The admins of this proyect are: Andres Hurtado, Raul Villanueva
+                            </p>
+                        </footer>
+                    </div>
+
+
+                </main>
+                <!-- Main Content End -->
+
+            </div>
+        </div>
+        <!--end of project-->
+    </main>
+
+
+
+
+</body>
+
+</html>
