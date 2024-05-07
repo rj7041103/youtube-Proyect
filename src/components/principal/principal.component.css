@@ -1,0 +1,10 @@
+.gallery{
+    min-width: 390px;
+}
+
+@media only screen and (max-width: 390px) {
+    .gallery {
+       max-width: 390px;
+       display: none;
+     }
+}

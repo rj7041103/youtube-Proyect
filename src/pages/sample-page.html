@@ -8,13 +8,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <!-- Favicon icon-->
-  <link rel="shortcut icon" type="image/png" href="../assets/images/logos/favicon.png" />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
     rel="stylesheet" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css">
   <!-- Core Css -->
-  <link rel="stylesheet" href="../assets/css/theme.css" />
-  <title>Spike TailwindCSS HTML Admin Template</title>
 </head>
 
 <body class=" bg-surface">
@@ -37,6 +34,7 @@
         <div class="scroll-sidebar" data-simplebar="">
           <nav class=" w-full flex flex-col sidebar-nav px-4 mt-5">
             <ul id="sidebarnav" class="text-gray-600 text-sm">
+
               <li class="text-xs font-bold pb-[5px]">
                 <i class="ti ti-dots nav-small-cap-icon text-lg hidden text-center"></i>
                 <span class="text-xs text-gray-400 font-semibold">HOME</span>
@@ -44,97 +42,15 @@
 
               <li class="sidebar-item">
                 <a class="sidebar-link gap-3 py-2.5 my-1 text-base  flex items-center relative  rounded-md text-gray-500  w-full"
-                  href="../index.html">
-                  <i class="ti ti-layout-dashboard ps-2  text-2xl"></i> <span>Dashboard</span>
+                  (click)="toggleComponentVisibility()">
+                  <i class="pi pi-user" style="font-size: 2.5rem"></i><span>Users</span>
                 </a>
               </li>
-
-              <li class="text-xs font-bold mb-4 mt-6">
-                <i class="ti ti-dots nav-small-cap-icon text-lg hidden text-center"></i>
-                <span class="text-xs text-gray-400 font-semibold">UI COMPONENTS</span>
-              </li>
-
-              <li class="sidebar-item">
-                <a class="sidebar-link gap-3 py-2.5 my-1 text-base   flex items-center relative  rounded-md text-gray-500  w-full"
-                  href="../components/buttons.html">
-                  <i class="ti ti-article ps-2 text-2xl"></i> <span>Buttons</span>
-                </a>
-              </li>
-
-              <li class="sidebar-item">
-                <a class="sidebar-link gap-3 py-2.5 my-1 text-base   flex items-center relative  rounded-md text-gray-500  w-full"
-                  href="../components/alerts.html">
-                  <i class="ti ti-alert-circle ps-2 text-2xl"></i> <span>Alerts</span>
-                </a>
-              </li>
-
-              <li class="sidebar-item">
-                <a class="sidebar-link gap-3 py-2.5 my-1 text-base   flex items-center relative  rounded-md text-gray-500  w-full"
-                  href="../components/cards.html">
-                  <i class="ti ti-cards ps-2 text-2xl"></i> <span>Card</span>
-                </a>
-              </li>
-
-              <li class="sidebar-item">
-                <a class="sidebar-link gap-3 py-2.5 my-1 text-base   flex items-center relative  rounded-md text-gray-500  w-full"
-                  href="../components/forms.html">
-                  <i class="ti ti-file-description ps-2 text-2xl"></i> <span>Forms</span>
-                </a>
-              </li>
-
-              <li class="sidebar-item">
-                <a class="sidebar-link gap-3 py-2.5 my-1 text-base   flex items-center relative  rounded-md text-gray-500  w-full"
-                  href="../components/typography.html">
-                  <i class="ti ti-typography ps-2 text-2xl"></i> <span>Typography</span>
-                </a>
-              </li>
-
-              <li class="text-xs font-bold mb-4 mt-8">
-                <i class="ti ti-dots nav-small-cap-icon  text-lg hidden text-center"></i>
-                <span class="text-xs text-gray-400 font-semibold">AUTH</span>
-              </li>
-
-              <li class="sidebar-item">
-                <a class="sidebar-link gap-3 py-2.5 my-1 text-base   flex items-center relative  rounded-md text-gray-500  w-full"
-                  href="../pages/authentication-login.html">
-                  <i class="ti ti-login ps-2 text-2xl"></i> <span>Login</span>
-                </a>
-              </li>
-
-              <li class="sidebar-item">
-                <a class="sidebar-link gap-3 py-2.5 my-1 text-base   flex items-center relative  rounded-md text-gray-500  w-full"
-                  href="../pages/authentication-register.html">
-                  <i class="ti ti-user-plus ps-2 text-2xl"></i> <span>Register</span>
-                </a>
-              </li>
-
-              <li class="text-xs font-bold mb-4 mt-8">
-                <i class="ti ti-dots nav-small-cap-icon text-lg hidden text-center"></i>
-                <span class="text-xs text-gray-400 font-semibold">EXTRA</span>
-              </li>
-
-              <li class="sidebar-item">
-                <a class="sidebar-link gap-3 py-2.5 my-1 text-base   flex items-center relative  rounded-md text-gray-500  w-full"
-                  href="../pages/icons.html">
-                  <i class="ti ti-mood-happy ps-2 text-2xl"></i> <span>Icons</span>
-                </a>
-              </li>
-
-              <li class="sidebar-item">
-                <a class="sidebar-link gap-3 py-2.5 my-1 text-base   flex items-center relative  rounded-md text-gray-500  w-full"
-                  href="../pages/sample-page.html">
-                  <i class="ti ti-aperture ps-2 text-2xl"></i> <span>Sample Page</span>
-                </a>
-              </li>
-
             </ul>
           </nav>
         </div>
 
         <!-- Bottom Upgrade Option -->
-        <div class="m-4  relative grid">
-          <button class="text-base font-semibold hover:bg-blue-700 btn">Upgrade to Pro</button>
-        </div>
         <!-- </aside> -->
       </aside>
       <div class=" w-full page-wrapper xl:px-6 px-0">
@@ -156,58 +72,6 @@
                       aria-label="Toggle navigation" href="javascript:void(0)">
                       <i class="ti ti-menu-2 relative z-1"></i>
                     </a>
-                  </li>
-
-                  <li class="relative">
-
-                    <div class="hs-dropdown relative inline-flex [--placement:bottom-left] sm:[--trigger:hover]">
-                      <a class="relative hs-dropdown-toggle inline-flex hover:text-gray-500 text-gray-300" href="#">
-                        <i class="ti ti-bell-ringing text-xl relative z-[1]"></i>
-                        <div
-                          class="absolute inline-flex items-center justify-center  text-white text-[11px] font-medium  bg-blue-600 w-2 h-2 rounded-full -top-[1px] -right-[6px]">
-                        </div>
-                      </a>
-                      <div
-                        class="card hs-dropdown-menu transition-[opacity,margin] rounded-md duration hs-dropdown-open:opacity-100 opacity-0 mt-2 min-w-max  w-[300px] hidden z-[12]"
-                        aria-labelledby="hs-dropdown-custom-icon-trigger">
-                        <div>
-                          <h3 class="text-gray-500 font-semibold text-base px-6 py-3">Notification</h3>
-                          <ul class="list-none  flex flex-col">
-                            <li>
-                              <a href="#" class="py-3 px-6 block hover:bg-gray-200">
-                                <p class="text-sm text-gray-500 font-medium">Roman Joined the Team!</p>
-                                <p class="text-xs text-gray-400 font-medium">Congratulate him</p>
-                              </a>
-                            </li>
-                            <li>
-                              <a href="#" class="py-3 px-6 block hover:bg-gray-200">
-                                <p class="text-sm text-gray-500 font-medium">New message received</p>
-                                <p class="text-xs text-gray-400 font-medium">Salma sent you new message</p>
-                              </a>
-                            </li>
-                            <li>
-                              <a href="#" class="py-3 px-6 block hover:bg-gray-200">
-                                <p class="text-sm text-gray-500 font-medium">New Payment received</p>
-                                <p class="text-xs text-gray-400 font-medium">Check your earnings</p>
-                              </a>
-                            </li>
-                            <li>
-                              <a href="#" class="py-3 px-6 block hover:bg-gray-200">
-                                <p class="text-sm text-gray-500 font-medium">Jolly completed tasks</p>
-                                <p class="text-xs text-gray-400 font-medium">Assign her new tasks</p>
-                              </a>
-                            </li>
-                            <li>
-                              <a href="#" class="py-3 px-6 block hover:bg-gray-200">
-                                <p class="text-sm text-gray-500 font-medium">Roman Joined the Team!</p>
-                                <p class="text-xs text-gray-400 font-medium">Congratulate him</p>
-                              </a>
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-
                   </li>
                 </ul>
                 <div class="flex items-center gap-4">
@@ -231,11 +95,6 @@
                           <i class="ti ti-mail  text-xl"></i>
                           <p class="text-sm ">My Account</p>
                         </a>
-                        <a href="javscript:void(0)"
-                          class="flex gap-2 items-center font-medium px-4 py-1.5 hover:bg-gray-200 text-gray-400">
-                          <i class="ti ti-list-check  text-xl "></i>
-                          <p class="text-sm ">My Task</p>
-                        </a>
                         <div class="px-4 mt-[7px] grid">
                           <a href="../../pages/authentication-login.html"
                             class="btn-outline-primary font-medium text-[15px] w-full hover:bg-blue-600 hover:text-white">Logout</a>
@@ -252,12 +111,133 @@
               <!-- ========== END HEADER ========== -->
             </header>
             <!--  Header End -->
-            <div class="card">
-              <div class="card-body">
-                <h6 class="text-lg text-gray-500 font-semibold mb-6">Sample Page</h6>
-                <p class="text-sm text-gray-400">This is a sample page</p>
-              </div>
-            </div>
+            @if(showComponent){
+            <p-table #dt [value]="customers" dataKey="id" [rowHover]="true" [rows]="1" [showCurrentPageReport]="true"
+              [rowsPerPageOptions]="[5, 10,20]" [loading]="loading" [paginator]="true" [filterDelay]="0"
+              [globalFilterFields]="['name', 'lastname', 'city']" class="w-10/12">
+
+
+              <ng-template pTemplate="header">
+
+                <tr>
+                  <th pSortableColumn="avatar" style="min-width: 14rem">
+                    <div class="flex justify-content-between align-items-center">
+                      Avatar
+                    </div>
+                  </th>
+                  <th pSortableColumn="name" style="min-width: 14rem">
+                    <div class="flex justify-content-between align-items-center">
+                      Name
+
+                    </div>
+                  </th>
+                  <th pSortableColumn="lastname" style="min-width: 14rem">
+                    <div class="flex justify-content-between align-items-center">
+                      Lastname
+
+                    </div>
+                  </th>
+
+                  <th style=" min-width: 10rem">
+                    <div class="flex justify-content-between align-items-center">
+                      DNI
+                    </div>
+                  </th>
+
+                  <th style=" min-width: 10rem">
+                    <div class="flex justify-content-between align-items-center">
+                      Email
+                    </div>
+                  </th>
+                  <th pSortableColumn="phone" style="min-width: 10rem">
+                    <div class="flex justify-content-between align-items-center">
+                      Phone
+                    </div>
+                  </th>
+                  <th style=" min-width: 10rem">
+                    <div class="flex justify-content-between align-items-center">
+                      State
+                    </div>
+                  </th>
+                  <th style=" min-width: 10rem">
+                    <div class="flex justify-content-between align-items-center">
+                      City
+                    </div>
+                  </th>
+                  <th style=" min-width: 10rem">
+                    <div class="flex justify-content-between align-items-center">
+                      Address
+                    </div>
+                  </th>
+
+                  <th pSortableColumn="status" style="min-width: 10rem">
+                    <div class="flex justify-content-between align-items-center">
+                      Status
+                    </div>
+                  </th>
+                  <th style="width: 5rem"></th>
+                </tr>
+              </ng-template>
+
+              <ng-template pTemplate="body" let-customer>
+
+
+                <tr *ngFor="let customer of customers; trackBy: trackCustomer " class="p-selectable-row"
+                  [id]="customer?.id">
+                  <td>
+                    <p-avatar [image]="customer?.img" styleClass="mr-2" size="xlarge" shape="circle"></p-avatar>
+                  </td>
+                  <td>
+                    {{ customer?.name ?? 'No Name' }}
+                  </td>
+                  <td>
+                    <span class="ml-1 vertical-align-middle">{{ customer?.lastname ?? 'No
+                      lastname' }}</span>
+                  </td>
+                  <td>
+                    <span class="ml-1 vertical-align-middle">{{ customer?.dni ?? 'No dni'
+                      }}</span>
+                  </td>
+                  <td>
+                    <span class="ml-1 vertical-align-middle">{{ customer?.email ?? 'No email'
+                      }}</span>
+
+                  </td>
+                  <td>
+                    <span class="ml-1 vertical-align-middle">{{ customer?.phone ?? 'No phone'
+                      }}</span>
+
+                  </td>
+                  <td>
+                    <span class="ml-1 vertical-align-middle">{{ customer?.state ?? 'No state'
+                      }}</span>
+
+                  </td>
+                  <td>
+                    <span class="ml-1 vertical-align-middle">{{ customer?.city ?? 'No city'
+                      }}</span>
+
+                  </td>
+                  <td>
+                    <span class="ml-1 vertical-align-middle"> {{ customer?.address ?? 'No
+                      addres' }}</span>
+
+                  </td>
+
+                  <td>
+                    <span class="p-column-title">Status</span>
+                    <p-tag [value]="customer?.status" [severity]="getSeverity(customer.status)"></p-tag>
+                  </td>
+                </tr>
+
+              </ng-template>
+              <ng-template pTemplate="emptymessage">
+                <tr>
+                  <td colspan="8">No customers found.</td>
+                </tr>
+              </ng-template>
+            </p-table>
+            }
           </div>
 
 
@@ -270,13 +250,6 @@
   </main>
 
 
-
-  <script src="../assets/libs/jquery/dist/jquery.min.js"></script>
-  <script src="../assets/libs/simplebar/dist/simplebar.min.js"></script>
-  <script src="../assets/libs/iconify-icon/dist/iconify-icon.min.js"></script>
-  <script src="../assets/libs/@preline/dropdown/index.js"></script>
-  <script src="../assets/libs/@preline/overlay/index.js"></script>
-  <script src="../assets/js/sidebarmenu.js"></script>
 
 
 

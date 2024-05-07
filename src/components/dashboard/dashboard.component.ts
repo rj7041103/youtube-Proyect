@@ -1,13 +1,19 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild, inject } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { TableModule } from 'primeng/table';
-import { Customer } from '../../interfaces/Customer';
+import { UserApp } from '../../interfaces/Customer';
 import { DropdownModule } from 'primeng/dropdown';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { TagModule } from 'primeng/tag';
 import { AvatarModule } from 'primeng/avatar';
 import { AvatarGroupModule } from 'primeng/avatargroup';
+import { AppserviceService } from '../../service/appservice.service';
+import { User } from '../../interfaces/UserInterface';
+import { map, of, switchMap } from 'rxjs';
+import { AutoCompleteModule } from 'primeng/autocomplete';
+import { ButtonModule } from 'primeng/button';
+import { DialogModule } from 'primeng/dialog';
 @Component({
   selector: 'app-dashboard',
   standalone: true,
@@ -21,15 +27,18 @@ import { AvatarGroupModule } from 'primeng/avatargroup';
     AvatarGroupModule,
     AvatarModule,
     RouterLink,
+    AutoCompleteModule,
+    ButtonModule,
+    DialogModule,
   ],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css',
 })
 export class DashboardComponent {
-  customers: Customer[] = [
+  customers: UserApp[] = [
     {
       id: 1,
-      img: '../../assets/images/profile/user-1.jpg',
+      avatar: '../../assets/images/profile/user-1.jpg',
       name: 'James',
       lastname: 'Bond',
       email: 'james@gmail.com',
@@ -37,12 +46,12 @@ export class DashboardComponent {
       address: 'Ciudad Alianza sector 1',
       state: 'Carabobo',
       city: 'Valencia',
-      dni: 123456789,
+      ci: 123456789,
       status: 'Active',
     },
     {
       id: 2,
-      img: '../../assets/images/profile/user-2.jpg',
+      avatar: '../../assets/images/profile/user-2.jpg',
       name: 'Ana',
       lastname: 'Volpica',
       email: 'ana@gmail.com',
@@ -50,12 +59,12 @@ export class DashboardComponent {
       address: 'Guacara la Granja',
       state: 'Carabobo',
       city: 'Valencia',
-      dni: 124861773,
+      ci: 124861773,
       status: 'Active',
     },
     {
       id: 3,
-      img: '../../assets/images/profile/user-3.jpg',
+      avatar: '../../assets/images/profile/user-3.jpg',
       name: 'Arturo',
       lastname: 'Gonzales',
       email: 'ArturGon@gmail.com',
@@ -63,12 +72,12 @@ export class DashboardComponent {
       address: 'Petare',
       state: 'Caracas',
       city: 'Caracas',
-      dni: 152010232,
+      ci: 152010232,
       status: 'Active',
     },
     {
       id: 4,
-      img: '../../assets/images/profile/user-4.jpg',
+      avatar: '../../assets/images/profile/user-4.jpg',
       name: 'Mario',
       lastname: 'Hernandez',
       email: 'MHernades2021@gmail.com',
@@ -76,12 +85,12 @@ export class DashboardComponent {
       address: 'Santa Ana de la cruz',
       state: 'Aragua',
       city: 'Maracay',
-      dni: 301227869,
+      ci: 301227869,
       status: 'Active',
     },
     {
       id: 5,
-      img: '../../assets/images/profile/user-1.jpg',
+      avatar: '../../assets/images/profile/user-1.jpg',
       name: 'Majo',
       lastname: 'Martinez',
       email: 'Majo@gmail.com',
@@ -89,20 +98,40 @@ export class DashboardComponent {
       address: '23 de Enero',
       state: 'Caracas',
       city: 'Caracas',
-      dni: 324152280,
+      ci: 324152280,
       status: 'Active',
     },
   ];
+
+  userlist!: any[];
+  //Cargamos los resultados de la api
+  private usersArr = inject(AppserviceService);
+  users$ = this.usersArr.getUsers();
+
   loading?: boolean = false;
   searchText: string = '';
   showComponent = false; // Variable para controlar la visibilidad del componente
+  showDialog = false;
+  //Iniciamos el arry de userlist para filtrar la tabla
+  ngOnInit(): void {
+    this.users$ = this.usersArr.getUsers();
+    this.users$.subscribe((users) => (this.userlist = users));
+  }
 
-  onFilter(value: string) {
-    this.customers = this.customers.filter(
-      (customer) =>
-        customer.name.includes(value) ||
-        customer.lastname.includes(value) ||
-        (customer.status && customer.status.includes(value)),
+  //funcion de filtrado
+  onFilter(query: string) {
+    if (!query.trim()) {
+      // Si la consulta está vacía, muestra todos los usuarios
+      this.users$ = of(this.userlist);
+      return;
+    }
+    // Filtra los usuarios basándose en el nombre o apellido
+    this.users$ = of(
+      this.userlist.filter(
+        (user) =>
+          user.name.toLowerCase().includes(query.toLowerCase()) ||
+          user.company.toLowerCase().includes(query.toLowerCase()),
+      ),
     );
   }
 
@@ -110,7 +139,12 @@ export class DashboardComponent {
     this.showComponent = !this.showComponent; // Cambia el valor de la variable
   }
 
-  trackCustomer(index: number, customer: any): any {
+  toggleShowVisibility() {
+    this.showDialog = !this.showDialog;
+    console.log('el resultado es:', this.showDialog);
+  }
+
+  trackUser(index: number, customer: any): any {
     return customer.id;
   }
 

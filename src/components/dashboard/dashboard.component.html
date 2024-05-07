@@ -37,7 +37,7 @@
                             </li>
 
                             <li class="sidebar-item">
-                                <a class="sidebar-link gap-3 py-2.5 my-1 text-base  flex items-center relative  rounded-md text-gray-500  w-full"
+                                <a class=" cursor-pointer sidebar-link gap-3 py-2.5 my-1 text-base  flex items-center relative  rounded-md text-gray-500  w-full"
                                     (click)="toggleComponentVisibility()">
                                     <i class="pi pi-user" style="font-size: 2.5rem"></i><span>Users</span>
                                 </a>
@@ -53,19 +53,25 @@
                 <main class="h-full  max-w-full">
                     <div class="container relative full-container p-0 flex flex-col gap-6">
                         <!--  Header Start -->
-                        <header class=" bg-white flex justify-end shadow-md rounded-md w-10/12 text-sm py-4 px-6">
+                        <header
+                            class=" bg-white flex justify-center shadow-md relative rounded-md w-10/12 text-sm py-4 px-6">
 
 
                             <!-- ========== HEADER ========== -->
 
-                            <nav class=" w-ful flex items-center justify-between" aria-label="Global">
+                            <nav class=" w-ful flex items-center justify-between w-11/12" aria-label="Global">
+
                                 <ul class="icon-nav flex items-center gap-4">
                                     <li class="relative xl:hidden">
                                         <a class="text-xl  icon-hover cursor-pointer text-heading" id="headerCollapse"
                                             data-hs-overlay="#application-sidebar-brand"
                                             aria-controls="application-sidebar-brand" aria-label="Toggle navigation"
                                             href="javascript:void(0)">
-                                            <i class="ti ti-menu-2 relative z-1"></i>
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="24"
+                                                height="24"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                                                <path
+                                                    d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z" />
+                                            </svg>
                                         </a>
                                     </li>
                                 </ul>
@@ -104,136 +110,233 @@
                         </header>
 
                         <div class="flex h-auto  justify-start items-center p-3  ">
-
-                            @if(showComponent){
-                            <p-table #dt [value]="customers" dataKey="id" [rowHover]="true" [rows]="1"
-                                [showCurrentPageReport]="true" [rowsPerPageOptions]="[5, 10,20]" [loading]="loading"
-                                [paginator]="true" [filterDelay]="0" [globalFilterFields]="['name', 'lastname', 'city']"
-                                class="w-10/12">
-
-
+                            <p-dialog header="Header" [modal]="true" #dialog
+                                [style]="{ width: '500px', height: '500px',zIndex: 999 }" [(visible)]="showDialog">
                                 <ng-template pTemplate="header">
-
-                                    <tr>
-                                        <th pSortableColumn="avatar" style="min-width: 14rem">
-                                            <div class="flex justify-content-between align-items-center">
-                                                Avatar
-                                            </div>
-                                        </th>
-                                        <th pSortableColumn="name" style="min-width: 14rem">
-                                            <div class="flex justify-content-between align-items-center">
-                                                Name
-
-                                            </div>
-                                        </th>
-                                        <th pSortableColumn="lastname" style="min-width: 14rem">
-                                            <div class="flex justify-content-between align-items-center">
-                                                Lastname
-
-                                            </div>
-                                        </th>
-
-                                        <th style=" min-width: 10rem">
-                                            <div class="flex justify-content-between align-items-center">
-                                                DNI
-                                            </div>
-                                        </th>
-
-                                        <th style=" min-width: 10rem">
-                                            <div class="flex justify-content-between align-items-center">
-                                                Email
-                                            </div>
-                                        </th>
-                                        <th pSortableColumn="phone" style="min-width: 10rem">
-                                            <div class="flex justify-content-between align-items-center">
-                                                Phone
-                                            </div>
-                                        </th>
-                                        <th style=" min-width: 10rem">
-                                            <div class="flex justify-content-between align-items-center">
-                                                State
-                                            </div>
-                                        </th>
-                                        <th style=" min-width: 10rem">
-                                            <div class="flex justify-content-between align-items-center">
-                                                City
-                                            </div>
-                                        </th>
-                                        <th style=" min-width: 10rem">
-                                            <div class="flex justify-content-between align-items-center">
-                                                Address
-                                            </div>
-                                        </th>
-
-                                        <th pSortableColumn="status" style="min-width: 10rem">
-                                            <div class="flex justify-content-between align-items-center">
-                                                Status
-                                            </div>
-                                        </th>
-                                        <th style="width: 5rem"></th>
-                                    </tr>
+                                    <div class="inline-flex align-items-center justify-content-center gap-2">
+                                        <p-avatar
+                                            image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png"
+                                            shape="circle" />
+                                        <span class="font-bold white-space-nowrap">
+                                            Amy Elsner
+                                        </span>
+                                    </div>
                                 </ng-template>
-
-                                <ng-template pTemplate="body" let-customer>
-
-
-                                    <tr *ngFor="let customer of customers; trackBy: trackCustomer "
-                                        class="p-selectable-row" [id]="customer?.id">
-                                        <td>
-                                            <p-avatar [image]="customer?.img" styleClass="mr-2" size="xlarge"
-                                                shape="circle"></p-avatar>
-                                        </td>
-                                        <td>
-                                            {{ customer?.name ?? 'No Name' }}
-                                        </td>
-                                        <td>
-                                            <span class="ml-1 vertical-align-middle">{{ customer?.lastname ?? 'No
-                                                lastname' }}</span>
-                                        </td>
-                                        <td>
-                                            <span class="ml-1 vertical-align-middle">{{ customer?.dni ?? 'No dni'
-                                                }}</span>
-                                        </td>
-                                        <td>
-                                            <span class="ml-1 vertical-align-middle">{{ customer?.email ?? 'No email'
-                                                }}</span>
-
-                                        </td>
-                                        <td>
-                                            <span class="ml-1 vertical-align-middle">{{ customer?.phone ?? 'No phone'
-                                                }}</span>
-
-                                        </td>
-                                        <td>
-                                            <span class="ml-1 vertical-align-middle">{{ customer?.state ?? 'No state'
-                                                }}</span>
-
-                                        </td>
-                                        <td>
-                                            <span class="ml-1 vertical-align-middle">{{ customer?.city ?? 'No city'
-                                                }}</span>
-
-                                        </td>
-                                        <td>
-                                            <span class="ml-1 vertical-align-middle"> {{ customer?.address ?? 'No
-                                                addres' }}</span>
-
-                                        </td>
-
-                                        <td>
-                                            <span class="p-column-title">Status</span>
-                                            <p-tag [value]="customer?.status"
-                                                [severity]="getSeverity(customer.status)"></p-tag>
-                                        </td>
-                                    </tr>
-
+                                <span class="p-text-secondary block mb-5">Update your
+                                    information.</span>
+                                <div class="flex relative items-center justify-around gap-2 mb-4">
+                                    <label for="userimg" class="font-semibold w-6rem">
+                                        Image
+                                    </label>
+                                    <input pInputText id="img"
+                                        class="flex p-2 pl-3 justify-around items-center rounded-md" autocomplete="off"
+                                        type="file" accept="image/jpeg, image/jpg, image/png" />
+                                </div>
+                                <div class="flex relative items-center justify-around gap-2 mb-4">
+                                    <label for="username" class="font-semibold w-6rem">
+                                        Name
+                                    </label>
+                                    <input pInputText id="name"
+                                        class="flex w-full p-2 pl-3 justify-around items-center rounded-md"
+                                        autocomplete="on" type="text" minlength="3" />
+                                </div>
+                                <div class="flex relative items-center justify-start gap-2 mb-4">
+                                    <label for="userlastname" class="font-semibold w-6rem">
+                                        Lastname
+                                    </label>
+                                    <input pInputText id="lastname" class=" flex-auto rounded-md" autocomplete="on"
+                                        type="text" minlength="3" />
+                                </div>
+                                <div class="flex relative items-center justify-around gap-2 mb-4">
+                                    <label for="ci" class="font-semibold w-6rem">CI</label>
+                                    <input pInputText id="ci" class="flex-auto rounded-md" autocomplete="on"
+                                        type="number" maxlength="8" pattern="/^\d+$/" />
+                                </div>
+                                <div class="flex relative items-center justify-around gap-2 mb-4">
+                                    <label for="email" class="font-semibold w-6rem">Email</label>
+                                    <input pInputText id="email" class="flex-auto rounded-md" autocomplete="on"
+                                        type="email" minlength="3" pattern="/^[^\s@]+@[^\s@]+\.[^\s@]+$/" />
+                                </div>
+                                <div class="flex relative items-center justify-around gap-2 mb-4">
+                                    <label for="phone" class="font-semibold w-6rem">Phone</label>
+                                    <input pInputText id="phone" class="flex-auto rounded-md" autocomplete="on"
+                                        type="number" maxlength="11" pattern="/^\d{1,11}$/" />
+                                </div>
+                                <div class="flex relative items-center justify-around gap-2 mb-4">
+                                    <label for="address" class="font-semibold w-6rem">Address</label>
+                                    <input pInputText id="address" class="flex-auto rounded-md" autocomplete="on"
+                                        type="text" minlength="3" />
+                                </div>
+                                <div class="flex relative items-center justify-around gap-2 mb-4">
+                                    <label for="state" class="font-semibold w-6rem">State</label>
+                                    <input pInputText id="state" class="flex-auto rounded-md" autocomplete="on"
+                                        type="text" minlength="3" />
+                                </div>
+                                <div class="flex relative items-center justify-around gap-2 mb-4">
+                                    <label for="city" class="font-semibold w-6rem">City</label>
+                                    <input pInputText id="city" class="flex-auto rounded-md" autocomplete="on"
+                                        type="text" minlength="3" />
+                                </div>
+                                <ng-template pTemplate="footer" class="flex justify-end gap-2">
+                                    <button
+                                        class=" bg-[#3B82F6] mr-3 text-neutral-100 active:-scale-[0.9] rounded-md p-[5px]"
+                                        (click)="toggleShowVisibility()">Save</button>
+                                    <button
+                                        class="active:border-sky-500 mr-3 active:-scale-[0.9] text-gray-800 rounded-md"
+                                        (click)="toggleShowVisibility()">Cancel</button>
                                 </ng-template>
-                                <ng-template pTemplate="emptymessage">
-                                    <tr>
-                                        <td colspan="8">No customers found.</td>
-                                    </tr>
-                                </ng-template>
-                            </p-table>
+                            </p-dialog>
+                            @if(showComponent){
+                            <div class="flex-col relative justify-center items-center w-10/12">
+                                <div class="flex justify-end align-items-center mb-4">
+                                    <p-autoComplete [suggestions]="userlist" [dropdown]="true"
+                                        (completeMethod)="onFilter($event.query)" field="name">
+                                    </p-autoComplete>
+
+                                </div>
+
+                                <p-table #dt [value]="customers" dataKey="id" [rowHover]="true" [rows]="1"
+                                    [showCurrentPageReport]="true" [rowsPerPageOptions]="[5, 10,20]" [loading]="loading"
+                                    [paginator]="true" [filterDelay]="0" [globalFilterFields]="['name', 'city']"
+                                    class="w-10/12">
+
+
+                                    <ng-template pTemplate="header">
+
+                                        <tr>
+                                            <th pSortableColumn="avatar" style="min-width: 14rem">
+                                                <div class="flex justify-content-between align-items-center">
+                                                    Avatar
+                                                </div>
+                                            </th>
+                                            <th pSortableColumn="name" style="min-width: 14rem">
+                                                <div class="flex justify-content-between align-items-center">
+                                                    Name
+
+                                                </div>
+                                            </th>
+                                            <th pSortableColumn="lastname" style="min-width: 14rem">
+                                                <div class="flex justify-content-between align-items-center">
+                                                    Lastname
+
+                                                </div>
+                                            </th>
+
+                                            <th style=" min-width: 10rem">
+                                                <div class="flex justify-content-between align-items-center">
+                                                    DNI
+                                                </div>
+                                            </th>
+
+                                            <th style=" min-width: 10rem">
+                                                <div class="flex justify-content-between align-items-center">
+                                                    Email
+                                                </div>
+                                            </th>
+                                            <th pSortableColumn="phone" style="min-width: 10rem">
+                                                <div class="flex justify-content-between align-items-center">
+                                                    Phone
+                                                </div>
+                                            </th>
+                                            <th style=" min-width: 10rem">
+                                                <div class="flex justify-content-between align-items-center">
+                                                    State
+                                                </div>
+                                            </th>
+                                            <th style=" min-width: 10rem">
+                                                <div class="flex justify-content-between align-items-center">
+                                                    City
+                                                </div>
+                                            </th>
+                                            <th style=" min-width: 10rem">
+                                                <div class="flex justify-content-between align-items-center">
+                                                    Address
+                                                </div>
+                                            </th>
+
+                                            <th pSortableColumn="status" style="min-width: 10rem">
+                                                <div class="flex justify-content-between align-items-center">
+                                                    Status
+                                                </div>
+                                            </th>
+                                            <th pSortableColumn="status" style="min-width: 10rem">
+                                                <div class="flex justify-content-between align-items-center">
+                                                    Action
+                                                </div>
+                                            </th>
+                                            <th style="width: 5rem"></th>
+                                        </tr>
+                                    </ng-template>
+
+                                    <ng-template pTemplate="body" let-customer>
+
+
+                                        <tr *ngFor="let user of (users$ | async); trackBy: trackUser "
+                                            class="p-selectable-row" [id]="user?.id">
+                                            <td>
+                                                <p-avatar [image]="user?.avatar" styleClass="mr-2" size="xlarge"
+                                                    shape="circle"></p-avatar>
+                                            </td>
+                                            <td>
+                                                {{ user?.name ?? 'No Name' }}
+                                            </td>
+                                            <td>
+                                                <span class="ml-1 vertical-align-middle">{{ user?.lastname ?? 'No
+                                                    lastname' }}</span>
+                                            </td>
+                                            <td>
+                                                <span class="ml-1 vertical-align-middle">{{ user?.ci?? 'No dni'
+                                                    }}</span>
+                                            </td>
+                                            <td>
+                                                <span class="ml-1 vertical-align-middle">{{ user?.email ?? 'No email'
+                                                    }}</span>
+
+                                            </td>
+                                            <td>
+                                                <span class="ml-1 vertical-align-middle">{{ user?.phone ?? 'No phone'
+                                                    }}</span>
+
+                                            </td>
+                                            <td>
+                                                <span class="ml-1 vertical-align-middle">{{ user?.state ?? 'No state'
+                                                    }}</span>
+
+                                            </td>
+                                            <td>
+                                                <span class="ml-1 vertical-align-middle">{{ user?.city ?? 'No city'
+                                                    }}</span>
+
+                                            </td>
+                                            <td>
+                                                <span class="ml-1 vertical-align-middle"> {{ user?.address ?? 'No
+                                                    addres' }}</span>
+
+                                            </td>
+
+                                            <td>
+                                                <span class="p-column-title">Status</span>
+                                                <p-tag [value]="customer?.status"
+                                                    [severity]="getSeverity(customer.status)"></p-tag>
+                                            </td>
+                                            <td>
+                                                <div class="flex justify-around items-center">
+                                                    <p-button label="sig out" [rounded]="true"
+                                                        severity="danger"></p-button>
+                                                    <p-button (click)="toggleShowVisibility()" label="Edit" />
+
+                                                </div>
+                                            </td>
+                                        </tr>
+
+                                    </ng-template>
+                                    <ng-template pTemplate="emptymessage">
+                                        <tr>
+                                            <td colspan="8">No customers found.</td>
+                                        </tr>
+                                    </ng-template>
+                                </p-table>
+                            </div>
                             }
 
                         </div>
