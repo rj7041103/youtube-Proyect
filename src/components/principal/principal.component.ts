@@ -1,8 +1,9 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, ViewChild, inject } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { GalleriaModule } from 'primeng/galleria';
 import { Carrusel } from '../../interfaces/Customer';
 import { AppserviceService } from '../../service/appservice.service';
+import { ColorserviceService } from '../../service/colorservice.service';
 @Component({
   selector: 'app-principal',
   standalone: true,
@@ -25,7 +26,18 @@ export class PrincipalComponent {
       thumbnailImageSrc: 'url2',
     },
   ];
+  private serviceColor = inject(ColorserviceService);
+  principalUserColor = this.serviceColor.newPrincipalColor;
+  secundaryUserColor = this.serviceColor.newSecundaryColor;
+  neutralBUserColor = this.serviceColor.newNeutralBColor;
+  neutralWUserColor = this.serviceColor.newNeutralWColor;
+  complementUserColor = this.serviceColor.newComplementColor;
+  paragraphSizeUser = this.serviceColor.newParagraphSizeUser;
+  subtitleSizeUser = this.serviceColor.newSubtitleSizeUser;
+  titleSizeUser = this.serviceColor.newTitleSizeUser;
+
   constructor(private service: AppserviceService) {}
+
   ngAfterViewInit() {
     const menuButton = this.menuBtn.nativeElement;
     const navigation = this.nav.nativeElement;

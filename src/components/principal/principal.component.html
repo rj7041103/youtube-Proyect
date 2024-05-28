@@ -37,11 +37,11 @@
 
 <body class="overflow-x-hidden antialiased">
     <!-- Header Section -->
-    <header class="relative z-50 w-full h-24">
+    <!--     <header class="relative z-50 w-full h-24">
         <div
             class="container flex items-center justify-center h-full max-w-6xl px-8 mx-auto sm:justify-between xl:px-0">
 
-            <a href="/" class="relative flex items-center inline-block h-5 h-full font-black leading-none">
+            <a href="/" class="relative  items-center inline-block h-5  font-black leading-none">
                 <svg class="w-auto h-6 text-indigo-600 fill-current" viewBox="0 0 194 116"
                     xmlns="http://www.w3.org/2000/svg">
                     <g fill-rule="evenodd">
@@ -54,7 +54,7 @@
             </a>
 
             <nav id="nav" #nav
-                class="absolute top-0 left-0 z-50 flex flex-col items-center justify-between hidden w-full h-64 pt-5 mt-24 text-sm text-gray-800 bg-white border-t border-gray-200 md:w-auto md:flex-row md:h-24 lg:text-base md:bg-transparent md:mt-0 md:border-none md:py-0 md:flex md:relative z-[100]">
+                class="absolute top-0 left-0   flex-col items-center justify-between hidden w-full h-64 pt-5 mt-24 text-sm text-gray-800 bg-white border-t border-gray-200 md:w-auto md:flex-row md:h-24 lg:text-base md:bg-transparent md:mt-0 md:border-none md:py-0 md:flex md:relative z-[100]">
                 <a [routerLink]="['']"
                     class="ml-0 mr-0 font-bold duration-100 md:ml-12 md:mr-3 lg:mr-8 transition-color hover:text-indigo-600 z-[100]">Home</a>
 
@@ -119,12 +119,62 @@
             </div>
 
         </div>
-    </header>
+    </header> -->
     <!-- End Header Section-->
     <!--     @if(navhidden){
         
     } -->
-    <div class="flex justify-around items-center  relative  bg-gray-900 z-50" #galeria>
+
+
+    <nav class="bg-white border-gray-200 dark:bg-gray-900 dark:border-gray-700">
+        <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+            <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
+                <img src="https://flowbite.com/docs/images/logo.svg" class="h-8" alt="Flowbite Logo" />
+                <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Flowbite</span>
+            </a>
+            <button data-collapse-toggle="navbar-dropdown" type="button"
+                class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+                aria-controls="navbar-dropdown" aria-expanded="false">
+                <span class="sr-only">Open main menu</span>
+                <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                    viewBox="0 0 17 14">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M1 1h15M1 7h15M1 13h15" />
+                </svg>
+            </button>
+            <div class="hidden w-full md:block md:w-auto" id="navbar-dropdown">
+                <ul
+                    class="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+                    <li>
+                        <a [routerLink]="['']" [ngStyle]="{'font-size':paragraphSizeUser}"
+                            class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Home</a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/dashboard']" [ngStyle]="{'font-size':paragraphSizeUser}"
+                            class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Dashboard</a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/profile']" [ngStyle]="{'font-size':paragraphSizeUser}"
+                            class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Profile</a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['']" [ngStyle]="{'font-size':paragraphSizeUser}"
+                            class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Services</a>
+                    </li>
+
+                    <li>
+                        <a [routerLink]="['/login']"
+                            class="block px-4 py-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                            [ngStyle]="{'background-color': complementUserColor, 'color':neutralWUserColor, 'font-size':paragraphSizeUser}">Login</a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="flex justify-evenly items-center  relative  bg-gray-900 z-50" #galeria
+        [ngStyle]="{'background-color': principalUserColor}">
         <p-galleria [value]="images" [showIndicators]="false" [showThumbnails]="false"
             [containerStyle]="{ 'max-width': '640px' }" [autoPlay]="true" [transitionInterval]="5000" [circular]="true"
             class=" flex gallery justify-between items-center  relative  w-full z-50 p-5">
@@ -138,23 +188,204 @@
             </ng-template>
 
         </p-galleria>
+
+
         <div
-            class="z-0 container-text flex flex-col items-center w-full max-w-xl pt-48 text-justify lg:items-start lg:w-1/2 lg:pt-20 xl:pt-40 lg:text-left">
-            <h1 class="relative mb-4 -mt-48 text-3xl font-black leading-tight text-white sm:text-6xl xl:mb-8">Youtube
-                proyect</h1>
-            <p class="pr-0 mb-8 text-base text-white sm:text-lg xl:text-xl lg:pr-20">Lorem ipsum dolor sit, amet
-                consectetur adipisicing elit. Provident, reiciendis quia! Magnam excepturi rem ad, ex eius magni sequi
-                esse corrupti deleniti ratione iste quod. Voluptates eius aperiam obcaecati culpa.</p>
+            class="w-full mr-8 p-4 text-center bg-white border border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700">
+            <h5 [ngStyle]="{'color': secundaryUserColor, 'font-size':subtitleSizeUser}"
+                class="mb-2 text-3xl font-bold text-gray-900 dark:text-white">Work fast from anywhere</h5>
+            <p [ngStyle]="{'color': neutralBUserColor, 'font-size':paragraphSizeUser}"
+                class="mb-5 text-base text-gray-500 sm:text-lg dark:text-gray-400">Stay up to date and move work forward
+                with Flowbite on iOS & Android. Download the app today.Lorem ipsum dolor sit amet consectetur
+                adipisicing elit. Quam, harum tempore, vitae corporis deserunt veniam expedita deleniti corrupti ipsa
+                similique mollitia? Assumenda ut perferendis nulla, inventore hic odio ab soluta? </p>
+
         </div>
+
     </div>
 
     <!-- HERO SECTION END -->
 
     <!-- BEGIN FEATURES SECTION -->
-    <div id="features" class="relative w-full px-8 py-10 border-t border-gray-200 md:py-16 lg:py-24 xl:py-40 xl:px-0">
+    <div class="flex-col gap-3 items-center justify-around mt-32 mb-10 text-center">
+        <div class="flex gap-3 items-center justify-around mt-32 text-center">
+            <h3 [ngStyle]="{'font-size': titleSizeUser, 'color': neutralBUserColor}"
+                class="max-w-2xl px-5 mt-2 text-3xl font-black leading-tight text-center text-gray-900 sm:mt-0 sm:px-0 sm:text-6xl">
+                Our Products</h3>
+        </div>
+        <div class="flex gap-3 items-center justify-around mt-32 text-center">
+            <div
+                class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                <a href="#">
+                    <img class="p-8 rounded-t-lg" src="/docs/images/products/apple-watch.png" alt="product image" />
+                </a>
+                <div class="px-5 pb-5">
+                    <a href="#">
+                        <h5 [ngStyle]="{'font-size': subtitleSizeUser,'color': principalUserColor }"
+                            class="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">Apple Watch
+                            Series 7
+                            GPS, Aluminium Case, Starlight Sport</h5>
+                    </a>
+                    <div class="flex items-center mt-2.5 mb-5">
+                        <div class="flex items-center space-x-1 rtl:space-x-reverse">
+                            <svg class="w-4 h-4 text-yellow-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                fill="currentColor" viewBox="0 0 22 20">
+                                <path
+                                    d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
+                            </svg>
+                            <svg class="w-4 h-4 text-yellow-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                fill="currentColor" viewBox="0 0 22 20">
+                                <path
+                                    d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
+                            </svg>
+                            <svg class="w-4 h-4 text-yellow-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                fill="currentColor" viewBox="0 0 22 20">
+                                <path
+                                    d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
+                            </svg>
+                            <svg class="w-4 h-4 text-yellow-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                fill="currentColor" viewBox="0 0 22 20">
+                                <path
+                                    d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
+                            </svg>
+                            <svg class="w-4 h-4 text-gray-200 dark:text-gray-600" aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
+                                <path
+                                    d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
+                            </svg>
+                        </div>
+                        <span
+                            class="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ms-3">5.0</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <span [ngStyle]="{'font-size': titleSizeUser, 'color': neutralBUserColor}"
+                            class="text-3xl font-bold text-gray-900 dark:text-white">$599</span>
+                        <a href="#"
+                            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                            [ngStyle]="{'background-color': complementUserColor, 'color':neutralWUserColor, 'font-size':paragraphSizeUser}">Add
+                            to cart</a>
+                    </div>
+                </div>
+            </div>
+
+            <div
+                class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                <a href="#">
+                    <img class="p-8 rounded-t-lg" src="/docs/images/products/apple-watch.png" alt="product image" />
+                </a>
+                <div class="px-5 pb-5">
+                    <a href="#">
+                        <h5 [ngStyle]="{'font-size': subtitleSizeUser,'color': principalUserColor }"
+                            class="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">Apple Watch
+                            Series 7
+                            GPS, Aluminium Case, Starlight Sport</h5>
+                    </a>
+                    <div class="flex items-center mt-2.5 mb-5">
+                        <div class="flex items-center space-x-1 rtl:space-x-reverse">
+                            <svg class="w-4 h-4 text-yellow-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                fill="currentColor" viewBox="0 0 22 20">
+                                <path
+                                    d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
+                            </svg>
+                            <svg class="w-4 h-4 text-yellow-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                fill="currentColor" viewBox="0 0 22 20">
+                                <path
+                                    d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
+                            </svg>
+                            <svg class="w-4 h-4 text-yellow-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                fill="currentColor" viewBox="0 0 22 20">
+                                <path
+                                    d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
+                            </svg>
+                            <svg class="w-4 h-4 text-yellow-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                fill="currentColor" viewBox="0 0 22 20">
+                                <path
+                                    d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
+                            </svg>
+                            <svg class="w-4 h-4 text-gray-200 dark:text-gray-600" aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
+                                <path
+                                    d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
+                            </svg>
+                        </div>
+                        <span
+                            class="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ms-3">5.0</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <span [ngStyle]="{'font-size': titleSizeUser, 'color': neutralBUserColor}"
+                            class="text-3xl font-bold text-gray-900 dark:text-white">$599</span>
+                        <a href="#"
+                            [ngStyle]="{'background-color': complementUserColor, 'color':neutralWUserColor, 'font-size':paragraphSizeUser}"
+                            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add
+                            to cart</a>
+                    </div>
+                </div>
+            </div>
+
+            <div
+                class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                <a href="#">
+                    <img class="p-8 rounded-t-lg" src="/docs/images/products/apple-watch.png" alt="product image" />
+                </a>
+                <div class="px-5 pb-5">
+                    <a href="#">
+                        <h5 [ngStyle]="{'font-size': subtitleSizeUser,'color': principalUserColor }"
+                            class="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">Apple Watch
+                            Series 7
+                            GPS, Aluminium Case, Starlight Sport</h5>
+                    </a>
+                    <div class="flex items-center mt-2.5 mb-5">
+                        <div class="flex items-center space-x-1 rtl:space-x-reverse">
+                            <svg class="w-4 h-4 text-yellow-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                fill="currentColor" viewBox="0 0 22 20">
+                                <path
+                                    d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
+                            </svg>
+                            <svg class="w-4 h-4 text-yellow-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                fill="currentColor" viewBox="0 0 22 20">
+                                <path
+                                    d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
+                            </svg>
+                            <svg class="w-4 h-4 text-yellow-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                fill="currentColor" viewBox="0 0 22 20">
+                                <path
+                                    d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
+                            </svg>
+                            <svg class="w-4 h-4 text-yellow-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                fill="currentColor" viewBox="0 0 22 20">
+                                <path
+                                    d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
+                            </svg>
+                            <svg class="w-4 h-4 text-gray-200 dark:text-gray-600" aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
+                                <path
+                                    d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
+                            </svg>
+                        </div>
+                        <span
+                            class="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ms-3">5.0</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <span [ngStyle]="{'font-size': titleSizeUser, 'color': neutralBUserColor}"
+                            class="text-3xl font-bold text-gray-900 dark:text-white">$599</span>
+                        <a href="#"
+                            [ngStyle]="{'background-color': complementUserColor, 'color':neutralWUserColor, 'font-size':paragraphSizeUser}"
+                            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add
+                            to cart</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+    <div id="features" [ngStyle]="{'background-color': neutralBUserColor}"
+        class="relative w-full px-8 py-10 border-t border-gray-200 md:py-16 lg:py-24 xl:py-40 xl:px-0">
         <div class="container flex flex-col items-center justify-between h-full max-w-6xl mx-auto">
-            <h2 class="my-5 text-base font-medium tracking-tight text-indigo-500 uppercase">Our Features</h2>
-            <h3
+            <h2 [ngStyle]="{'font-size': paragraphSizeUser, 'color': complementUserColor}"
+                class="my-5 text-base font-medium tracking-tight text-indigo-500 uppercase">Our Features</h2>
+            <h3 [ngStyle]="{'font-size': titleSizeUser, 'color': neutralWUserColor}"
                 class="max-w-2xl px-5 mt-2 text-3xl font-black leading-tight text-center text-gray-900 sm:mt-0 sm:px-0 sm:text-6xl">
                 Built and Designed with you in Mind</h3>
             <div class="flex flex-col w-full mt-0 lg:flex-row sm:mt-10 lg:mt-20">
@@ -214,11 +445,14 @@
                                 </g>
                             </g>
                         </svg>
-                        <h4 class="relative mt-6 text-lg font-bold">Automated Tools</h4>
-                        <p class="relative mt-2 text-base text-center text-gray-600">Automate your workflow with these
+                        <h4 [ngStyle]="{'font-size': subtitleSizeUser, 'color': secundaryUserColor}"
+                            class="relative mt-6 text-lg font-bold">Automated Tools</h4>
+                        <p [ngStyle]="{'font-size': paragraphSizeUser, 'color': secundaryUserColor}"
+                            class="relative mt-2 text-base text-center text-gray-600">Automate your workflow with these
                             top of the
                             line marketing tools.</p>
-                        <a href="#_" class="relative flex mt-2 text-sm font-medium text-indigo-500 underline">Learn
+                        <a href="#_" [ngStyle]="{'font-size': paragraphSizeUser, 'color': complementUserColor}"
+                            class="relative flex mt-2 text-sm font-medium text-indigo-500 underline">Learn
                             More</a>
                     </div>
                 </div>
@@ -277,11 +511,15 @@
                                 </g>
                             </g>
                         </svg>
-                        <h4 class="relative mt-6 text-lg font-bold">Machine Learning</h4>
-                        <p class="relative mt-2 text-base text-center text-gray-600">Your Marketing tools will learn how
+                        <h4 [ngStyle]="{'font-size': subtitleSizeUser, 'color': secundaryUserColor}"
+                            class="relative mt-6 text-lg font-bold">Machine Learning</h4>
+                        <p [ngStyle]="{'font-size': paragraphSizeUser, 'color': secundaryUserColor}"
+                            class="relative mt-2 text-base text-center text-gray-600">Your Marketing tools will learn
+                            how
                             to better
                             convert and sell.</p>
-                        <a href="#_" class="relative flex mt-2 text-sm font-medium text-indigo-500 underline">Learn
+                        <a href="#_" [ngStyle]="{'font-size': paragraphSizeUser, 'color': complementUserColor}"
+                            class="relative flex mt-2 text-sm font-medium text-indigo-500 underline">Learn
                             More</a>
                     </div>
                 </div>
@@ -340,11 +578,15 @@
                                 </g>
                             </g>
                         </svg>
-                        <h4 class="relative mt-6 text-lg font-bold">Smart Notifications</h4>
-                        <p class="relative mt-2 text-base text-center text-gray-600">Our smart notifications will notify
+                        <h4 [ngStyle]="{'font-size': subtitleSizeUser, 'color': secundaryUserColor}"
+                            class="relative mt-6 text-lg font-bold">Smart Notifications</h4>
+                        <p [ngStyle]="{'font-size': paragraphSizeUser, 'color': secundaryUserColor}"
+                            class="relative mt-2 text-base text-center text-gray-600">Our smart notifications will
+                            notify
                             you when
                             users convert.</p>
-                        <a href="#_" class="relative flex mt-2 text-sm font-medium text-indigo-500 underline">Learn
+                        <a href="#_" [ngStyle]="{'font-size': paragraphSizeUser, 'color': complementUserColor}"
+                            class="relative flex mt-2 text-sm font-medium text-indigo-500 underline">Learn
                             More</a>
                     </div>
                 </div>
@@ -355,11 +597,12 @@
     <!-- END FEATURES SECTION -->
 
     <!-- Pricing Section -->
-    <div class="relative px-8 py-10 bg-white border-t border-gray-200 md:py-16 lg:py-24 xl:py-40 xl:px-0">
+    <div class="relative px-8 py-10 -mt-32 bg-white border-t border-gray-200 md:py-16 lg:py-24 xl:py-40 xl:px-0">
 
         <div id="pricing" class="container flex flex-col items-center h-full max-w-6xl mx-auto">
-            <h2 class="my-5 text-base font-medium tracking-tight text-indigo-500 uppercase">Our Pricing</h2>
-            <h3
+            <h2 [ngStyle]="{'font-size': paragraphSizeUser,'color': secundaryUserColor }"
+                class="my-5 text-base font-medium tracking-tight text-indigo-500 uppercase">Our Pricing</h2>
+            <h3 [ngStyle]="{'font-size': titleSizeUser,'color': neutralBUserColor }"
                 class="w-full max-w-2xl px-5 px-8 mt-2 text-2xl font-black leading-tight text-center text-gray-900 sm:mt-0 sm:px-0 sm:text-6xl md:px-0">
                 Simple, Transparent Pricing for Everyone</h3>
 
@@ -368,16 +611,21 @@
                 <div class="relative flex flex-col items-center block sm:flex-row">
                     <div
                         class="relative z-0 w-11/12 max-w-sm my-8 border border-gray-200 rounded-lg sm:w-3/5 lg:w-1/3 sm:my-5 md:-mr-4">
-                        <div class="overflow-hidden text-black bg-white border-t border-gray-100 rounded-lg shadow-sm">
+                        <div [ngStyle]="{'background-color': principalUserColor }"
+                            class="overflow-hidden text-black bg-white border-t border-gray-100 rounded-lg shadow-sm">
                             <div
                                 class="block max-w-sm px-8 mx-auto mt-5 text-sm text-left text-black sm:text-md lg:px-6">
-                                <h3 class="p-3 text-lg font-bold tracking-wide text-center uppercase">Basic<span
+                                <h3 [ngStyle]="{'font-size': subtitleSizeUser, 'color': neutralWUserColor }"
+                                    class="p-3 text-lg font-bold tracking-wide text-center uppercase">Basic<span
+                                        [ngStyle]="{'font-size': subtitleSizeUser, 'color': neutralWUserColor }"
                                         class="ml-2 font-light">Plan</span></h3>
-                                <h4
+                                <h4 [ngStyle]="{'font-size': subtitleSizeUser, 'color': neutralWUserColor }"
                                     class="flex items-center justify-center pb-6 text-4xl font-bold text-center text-gray-900">
-                                    <span class="mr-1 -ml-2 text-lg text-gray-700">$</span>48
+                                    <span [ngStyle]="{'font-size': subtitleSizeUser, 'color': neutralWUserColor }"
+                                        class="mr-1 -ml-2 text-lg text-gray-700">$</span>48
                                 </h4>
-                                <p class="text-sm text-gray-600">In our basic plan you can take advantage of all these
+                                <p [ngStyle]="{'font-size': subtitleSizeUser, 'color': neutralWUserColor }"
+                                    class="text-sm text-gray-600">In our basic plan you can take advantage of all these
                                     features below.
                                 </p>
                             </div>
@@ -393,7 +641,8 @@
                                                 <polyline points="22 4 12 14.01 9 11.01"></polyline>
                                             </svg>
                                         </div>
-                                        <span class="ml-3 text-lg text-gray-700">Awesome Feature</span>
+                                        <span [ngStyle]="{'font-size': paragraphSizeUser, 'color': neutralWUserColor }"
+                                            class="ml-3 text-lg text-gray-700">Awesome Feature</span>
                                     </li>
                                     <li class="flex items-center">
                                         <div class="p-2 text-green-500 rounded-full fill-current ">
@@ -404,7 +653,8 @@
                                                 <polyline points="22 4 12 14.01 9 11.01"></polyline>
                                             </svg>
                                         </div>
-                                        <span class="ml-3 text-lg text-gray-700">And Another Cool Feature</span>
+                                        <span [ngStyle]="{'font-size': paragraphSizeUser, 'color': neutralWUserColor }"
+                                            class="ml-3 text-lg text-gray-700">And Another Cool Feature</span>
                                     </li>
                                     <li class="flex items-center">
                                         <div class="p-2 text-green-500 rounded-full fill-current ">
@@ -415,31 +665,36 @@
                                                 <polyline points="22 4 12 14.01 9 11.01"></polyline>
                                             </svg>
                                         </div>
-                                        <span class="ml-3 text-lg text-gray-700">One More Feature</span>
+                                        <span [ngStyle]="{'font-size': paragraphSizeUser, 'color': neutralWUserColor }"
+                                            class="ml-3 text-lg text-gray-700">One More Feature</span>
                                     </li>
                                 </ul>
                             </div>
                             <div class="flex items-center block p-8 uppercase">
                                 <a href="#_"
-                                    class="block w-full px-6 py-4 mt-3 text-lg font-semibold text-center text-white bg-gray-900 rounded shadow-sm hover:bg-green-600">Select
+                                    class="block w-full px-6 py-4 mt-3 text-lg font-semibold text-center text-white bg-gray-900 rounded shadow-sm ">Select
                                     This Plan</a>
                             </div>
                         </div>
                     </div>
                     <!-- Pro Pricing -->
-                    <div
+                    <div [ngStyle]="{'background-color': principalUserColor }"
                         class="relative z-10 w-full max-w-md my-8 bg-white rounded-lg shadow-lg sm:w-2/3 lg:w-1/3 sm:my-5">
-                        <div
+                        <div [ngStyle]="{'background-color': complementUserColor, 'color': neutralWUserColor }"
                             class="py-4 text-sm font-semibold leading-none tracking-wide text-center text-white uppercase bg-indigo-500 rounded-t">
                             Most Popular</div>
                         <div class="block max-w-sm px-8 mx-auto mt-5 text-sm text-left text-black sm:text-md lg:px-6">
-                            <h3 class="p-3 pb-1 text-lg font-bold tracking-wide text-center uppercase">Pro<span
+                            <h3 [ngStyle]="{'font-size': subtitleSizeUser, 'color': neutralWUserColor }"
+                                class="p-3 pb-1 text-lg font-bold tracking-wide text-center uppercase">Pro<span
+                                    [ngStyle]="{'font-size': subtitleSizeUser, 'color': neutralWUserColor }"
                                     class="ml-2 font-light">Plan</span></h3>
-                            <h4
+                            <h4 [ngStyle]="{'font-size': subtitleSizeUser, 'color': neutralWUserColor }"
                                 class="flex items-center justify-center pb-6 text-5xl font-bold text-center text-gray-900">
-                                <span class="mr-1 -ml-2 text-lg text-gray-700">$</span>98
+                                <span [ngStyle]="{'font-size': subtitleSizeUser, 'color': neutralWUserColor }"
+                                    class="mr-1 -ml-2 text-lg text-gray-700">$</span>98
                             </h4>
-                            <p class="text-sm text-gray-600">Our most popular package is the Pro Plan which gives you
+                            <p [ngStyle]="{'font-size': paragraphSizeUser, 'color': neutralWUserColor }"
+                                class="text-sm text-gray-600">Our most popular package is the Pro Plan which gives you
                                 access to the
                                 following:</p>
                         </div>
@@ -454,7 +709,8 @@
                                             <polyline points="22 4 12 14.01 9 11.01"></polyline>
                                         </svg>
                                     </div>
-                                    <span class="ml-3 text-lg text-gray-700">Really Cool Features</span>
+                                    <span [ngStyle]="{'font-size': paragraphSizeUser, 'color': neutralWUserColor }"
+                                        class="ml-3 text-lg text-gray-700">Really Cool Features</span>
                                 </li>
                                 <li class="flex items-center">
                                     <div class="p-2 text-green-500 rounded-full fill-current ">
@@ -465,7 +721,8 @@
                                             <polyline points="22 4 12 14.01 9 11.01"></polyline>
                                         </svg>
                                     </div>
-                                    <span class="ml-3 text-lg text-gray-700">Another Cool Feature</span>
+                                    <span [ngStyle]="{'font-size': paragraphSizeUser, 'color': neutralWUserColor }"
+                                        class="ml-3 text-lg text-gray-700">Another Cool Feature</span>
                                 </li>
                                 <li class="flex items-center">
                                     <div class="p-2 text-green-500 rounded-full fill-current ">
@@ -476,30 +733,36 @@
                                             <polyline points="22 4 12 14.01 9 11.01"></polyline>
                                         </svg>
                                     </div>
-                                    <span class="ml-3 text-lg text-gray-700">And One More</span>
+                                    <span [ngStyle]="{'font-size': paragraphSizeUser, 'color': neutralWUserColor }"
+                                        class="ml-3 text-lg text-gray-700">And One More</span>
                                 </li>
                             </ul>
                         </div>
 
                         <div class="flex items-center block p-8 uppercase">
                             <a href="#_"
-                                class="block w-full px-6 py-4 mt-3 text-lg font-semibold text-center text-white bg-gray-900 rounded shadow-sm hover:bg-indigo-600">Select
+                                class="block w-full px-6 py-4 mt-3 text-lg font-semibold text-center text-white bg-gray-900 rounded shadow-sm ">Select
                                 This Plan</a>
                         </div>
                     </div>
                     <!-- Premium Pricing -->
                     <div
                         class="relative z-0 w-11/12 max-w-sm my-8 rounded-lg shadow-lg sm:w-3/5 lg:w-1/3 sm:my-5 md:-ml-4">
-                        <div class="overflow-hidden text-black bg-white rounded-lg shadow-lg shadow-inner">
+                        <div [ngStyle]="{'background-color': principalUserColor }"
+                            class="overflow-hidden text-black bg-white rounded-lg shadow-lg shadow-inner">
                             <div
                                 class="block max-w-sm px-8 mx-auto mt-5 text-sm text-left text-black sm:text-md lg:px-8">
-                                <h3 class="p-3 pb-1 text-lg font-bold tracking-wide text-center uppercase">Premium<span
+                                <h3 [ngStyle]="{'font-size': subtitleSizeUser, 'color': neutralWUserColor }"
+                                    class="p-3 pb-1 text-lg font-bold tracking-wide text-center uppercase">Premium<span
+                                        [ngStyle]="{'font-size': subtitleSizeUser, 'color': neutralWUserColor }"
                                         class="ml-2 font-light">Plan</span></h3>
-                                <h4
+                                <h4 [ngStyle]="{'font-size': subtitleSizeUser, 'color': neutralWUserColor }"
                                     class="flex items-center justify-center pb-6 text-4xl font-bold text-center text-gray-900">
-                                    <span class="mr-1 -ml-2 text-lg text-gray-700">$</span>78
+                                    <span [ngStyle]="{'font-size': subtitleSizeUser, 'color': neutralWUserColor }"
+                                        class="mr-1 -ml-2 text-lg text-gray-700">$</span>78
                                 </h4>
-                                <p class="pl-2 text-sm text-gray-600">With our premium plan you can take advantage of
+                                <p [ngStyle]="{'font-size': paragraphSizeUser, 'color': neutralWUserColor }"
+                                    class="pl-2 text-sm text-gray-600">With our premium plan you can take advantage of
                                     all the following
                                     features:</p>
                             </div>
@@ -514,7 +777,8 @@
                                                 <polyline points="22 4 12 14.01 9 11.01"></polyline>
                                             </svg>
                                         </div>
-                                        <span class="ml-3 text-lg text-gray-700">Totally Tubular Feature</span>
+                                        <span [ngStyle]="{'font-size': paragraphSizeUser, 'color': neutralWUserColor }"
+                                            class="ml-3 text-lg text-gray-700">Totally Tubular Feature</span>
                                     </li>
                                     <li class="flex items-center">
                                         <div class="p-2 text-green-500 rounded-full fill-current ">
@@ -525,7 +789,8 @@
                                                 <polyline points="22 4 12 14.01 9 11.01"></polyline>
                                             </svg>
                                         </div>
-                                        <span class="ml-3 text-lg text-gray-700">Super Cool Feature</span>
+                                        <span [ngStyle]="{'font-size': paragraphSizeUser, 'color': neutralWUserColor }"
+                                            class="ml-3 text-lg text-gray-700">Super Cool Feature</span>
                                     </li>
                                     <li class="flex items-center">
                                         <div class="p-2 text-green-500 rounded-full fill-current ">
@@ -536,14 +801,15 @@
                                                 <polyline points="22 4 12 14.01 9 11.01"></polyline>
                                             </svg>
                                         </div>
-                                        <span class="ml-3 text-lg text-gray-700">And One More</span>
+                                        <span [ngStyle]="{'font-size': paragraphSizeUser, 'color': neutralWUserColor }"
+                                            class="ml-3 text-lg text-gray-700">And One More</span>
                                     </li>
                                 </ul>
                             </div>
 
                             <div class="flex items-center block p-8 uppercase">
                                 <a href="#_"
-                                    class="block w-full px-6 py-4 mt-3 text-lg font-semibold text-center text-white bg-gray-900 rounded shadow-sm hover:bg-green-600">Select
+                                    class="block w-full px-6 py-4 mt-3 text-lg font-semibold text-center text-white bg-gray-900 rounded shadow-sm ">Select
                                     This Plan</a>
                             </div>
                         </div>
@@ -558,39 +824,42 @@
 
     <!-- Start Testimonials -->
     <div id="testimonials"
-        class="flex items-center justify-center w-full px-8 py-10 border-t border-gray-200 md:py-16 lg:py-24 xl:py-40 xl:px-0">
+        class="flex items-center -mt-32 justify-center w-full px-8 py-10 border-t border-gray-200 md:py-16 lg:py-24 xl:py-40 xl:px-0">
         <div class="max-w-6xl mx-auto">
             <div class="flex-col items-center ">
                 <div class="flex flex-col items-center justify-center w-full h-full max-w-2xl pr-8 mx-auto text-center">
-                    <p class="my-5 text-base font-medium tracking-tight text-indigo-500 uppercase">Our customers love
-                        our product
-                    </p>
-                    <h2
+
+                    <h2 [ngStyle]="{'color': neutralBUserColor, 'font-size':titleSizeUser}"
                         class="text-4xl font-extrabold leading-10 tracking-tight text-gray-900 sm:text-5xl sm:leading-none md:text-6xl lg:text-5xl xl:text-6xl">
                         Testimonials</h2>
-                    <p class="my-6 text-xl font-medium text-gray-500">Don't just take our word for it, read from our
+                    <p [ngStyle]="{'color': principalUserColor, 'font-size':paragraphSizeUser}"
+                        class="my-6 text-xl font-medium text-gray-500">Don't just take our word for it, read from our
                         extensive
                         list of case studies and customer testimonials.</p>
 
                 </div>
                 <div class="flex flex-col items-center justify-center max-w-2xl py-8 mx-auto xl:flex-row xl:max-w-full">
                     <div class="w-full xl:w-1/2 xl:pr-8">
-                        <blockquote
+                        <blockquote [ngStyle]="{'background-color': neutralBUserColor}"
                             class="flex flex-col-reverse items-center justify-between w-full col-span-1 p-6 text-center transition-all duration-200 bg-gray-100 rounded-lg md:flex-row md:text-left hover:bg-white hover:shadow ease">
                             <div class="flex flex-col pr-8">
                                 <div class="relative pl-12">
-                                    <svg class="absolute left-0 w-10 h-10 text-indigo-500 fill-current"
+                                    <svg [ngStyle]="{'color': neutralWUserColor, 'font-size':paragraphSizeUser}"
+                                        class="absolute left-0 w-10 h-10 text-indigo-500 fill-current"
                                         xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 125">
                                         <path
                                             d="M30.7 42c0 6.1 12.6 7 12.6 22 0 11-7.9 19.2-18.9 19.2C12.7 83.1 5 72.6 5 61.5c0-19.2 18-44.6 29.2-44.6 2.8 0 7.9 2 7.9 5.4S30.7 31.6 30.7 42zM82.4 42c0 6.1 12.6 7 12.6 22 0 11-7.9 19.2-18.9 19.2-11.8 0-19.5-10.5-19.5-21.6 0-19.2 18-44.6 29.2-44.6 2.8 0 7.9 2 7.9 5.4S82.4 31.6 82.4 42z" />
                                     </svg>
-                                    <p class="mt-2 text-base text-gray-600">I'm loving these templates! Very nice
+                                    <p [ngStyle]="{'color': neutralWUserColor, 'font-size':paragraphSizeUser}"
+                                        class="mt-2 text-base text-gray-600">I'm loving these templates! Very nice
                                         features and layouts.
                                     </p>
                                 </div>
 
-                                <h3 class="pl-12 mt-3 text-base font-medium leading-5 text-gray-800 truncate">Sandra
-                                    Walton <span class="mt-1 text-sm leading-5 text-gray-500 truncate">- CEO
+                                <h3 [ngStyle]="{'color': neutralWUserColor, 'font-size':subtitleSizeUser}"
+                                    class="pl-12 mt-3 text-base font-medium leading-5 text-gray-800 truncate">Sandra
+                                    Walton <span [ngStyle]="{'color': neutralWUserColor, 'font-size':subtitleSizeUser}"
+                                        class="mt-1 text-sm leading-5 text-gray-500 truncate">- CEO
                                         SomeCompany</span></h3>
                                 <p class="mt-1 text-sm leading-5 text-gray-500 truncate"></p>
                             </div>
@@ -598,21 +867,25 @@
                                 src="https://images.unsplash.com/photo-1544725176-7c40e5a71c5e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2694&q=80"
                                 alt="">
                         </blockquote>
-                        <blockquote
+                        <blockquote [ngStyle]="{'background-color': neutralBUserColor}"
                             class="flex flex-col-reverse items-center justify-between w-full col-span-1 p-6 mt-16 mb-16 text-center transition-all duration-200 bg-gray-100 rounded-lg md:flex-row md:text-left hover:bg-white hover:shadow ease xl:mb-0">
                             <div class="flex flex-col pr-10">
                                 <div class="relative pl-12">
-                                    <svg class="absolute left-0 w-10 h-10 text-indigo-500 fill-current"
+                                    <svg [ngStyle]="{'color': neutralWUserColor, 'font-size':paragraphSizeUser}"
+                                        class="absolute left-0 w-10 h-10 text-indigo-500 fill-current"
                                         xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 125">
                                         <path
                                             d="M30.7 42c0 6.1 12.6 7 12.6 22 0 11-7.9 19.2-18.9 19.2C12.7 83.1 5 72.6 5 61.5c0-19.2 18-44.6 29.2-44.6 2.8 0 7.9 2 7.9 5.4S30.7 31.6 30.7 42zM82.4 42c0 6.1 12.6 7 12.6 22 0 11-7.9 19.2-18.9 19.2-11.8 0-19.5-10.5-19.5-21.6 0-19.2 18-44.6 29.2-44.6 2.8 0 7.9 2 7.9 5.4S82.4 31.6 82.4 42z" />
                                     </svg>
-                                    <p class="mt-2 text-base text-gray-600">Really digging this service. Now I can
+                                    <p [ngStyle]="{'color': neutralWUserColor, 'font-size':paragraphSizeUser}"
+                                        class="mt-2 text-base text-gray-600">Really digging this service. Now I can
                                         quickly bootstrap any
                                         project.</p>
                                 </div>
-                                <h3 class="pl-12 mt-3 text-base font-medium leading-5 text-gray-800 truncate">Kenny
-                                    Jones <span class="mt-1 text-sm leading-5 text-gray-500 truncate">- CEO
+                                <h3 [ngStyle]="{'color': neutralWUserColor, 'font-size':subtitleSizeUser}"
+                                    class="pl-12 mt-3 text-base font-medium leading-5 text-gray-800 truncate">Kenny
+                                    Jones <span [ngStyle]="{'color': neutralWUserColor, 'font-size':subtitleSizeUser}"
+                                        class="mt-1 text-sm leading-5 text-gray-500 truncate">- CEO
                                         SomeCompany</span></h3>
                                 <p class="mt-1 text-sm leading-5 text-gray-500 truncate"></p>
                             </div>
@@ -622,22 +895,27 @@
                         </blockquote>
                     </div>
                     <div class="w-full xl:w-1/2 xl:pl-8">
-                        <blockquote
+                        <blockquote [ngStyle]="{'background-color': secundaryUserColor}"
                             class="flex flex-col-reverse items-center justify-between w-full col-span-1 p-6 text-center transition-all duration-200 bg-gray-100 rounded-lg md:flex-row md:text-left hover:bg-white hover:shadow ease">
                             <div class="flex flex-col pr-10">
                                 <div class="relative pl-12">
-                                    <svg class="absolute left-0 w-10 h-10 text-indigo-500 fill-current"
+                                    <svg [ngStyle]="{'color': neutralWUserColor, 'font-size':paragraphSizeUser}"
+                                        class="absolute left-0 w-10 h-10 text-indigo-500 fill-current"
                                         xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 125">
                                         <path
                                             d="M30.7 42c0 6.1 12.6 7 12.6 22 0 11-7.9 19.2-18.9 19.2C12.7 83.1 5 72.6 5 61.5c0-19.2 18-44.6 29.2-44.6 2.8 0 7.9 2 7.9 5.4S30.7 31.6 30.7 42zM82.4 42c0 6.1 12.6 7 12.6 22 0 11-7.9 19.2-18.9 19.2-11.8 0-19.5-10.5-19.5-21.6 0-19.2 18-44.6 29.2-44.6 2.8 0 7.9 2 7.9 5.4S82.4 31.6 82.4 42z" />
                                     </svg>
-                                    <p class="mt-2 text-base text-gray-600">Extremely helpful in every single project we
+                                    <p [ngStyle]="{'color': neutralWUserColor, 'font-size':paragraphSizeUser}"
+                                        class="mt-2 text-base text-gray-600">Extremely helpful in every single project
+                                        we
                                         have released.
                                     </p>
                                 </div>
 
-                                <h3 class="pl-12 mt-3 text-base font-medium leading-5 text-gray-800 truncate">Mike Smith
-                                    <span class="mt-1 text-sm leading-5 text-gray-500 truncate">- CEO SomeCompany</span>
+                                <h3 [ngStyle]="{'color': neutralWUserColor, 'font-size':subtitleSizeUser}"
+                                    class="pl-12 mt-3 text-base font-medium leading-5 text-gray-800 truncate">Mike Smith
+                                    <span [ngStyle]="{'color': neutralWUserColor, 'font-size':subtitleSizeUser}"
+                                        class="mt-1 text-sm leading-5 text-gray-500 truncate">- CEO SomeCompany</span>
                                 </h3>
                                 <p class="mt-1 text-sm leading-5 text-gray-500 truncate"></p>
                             </div>
@@ -645,22 +923,26 @@
                                 src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1700&q=80"
                                 alt="">
                         </blockquote>
-                        <blockquote
+                        <blockquote [ngStyle]="{'background-color': secundaryUserColor}"
                             class="flex flex-col-reverse items-center justify-between w-full col-span-1 p-6 mt-16 text-center transition-all duration-200 bg-gray-100 rounded-lg md:flex-row md:text-left hover:bg-white hover:shadow ease">
                             <div class="flex flex-col pr-10">
                                 <div class="relative pl-12">
-                                    <svg class="absolute left-0 w-10 h-10 text-indigo-500 fill-current"
+                                    <svg [ngStyle]="{'color': neutralWUserColor, 'font-size':paragraphSizeUser}"
+                                        class="absolute left-0 w-10 h-10 text-indigo-500 fill-current"
                                         xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 125">
                                         <path
                                             d="M30.7 42c0 6.1 12.6 7 12.6 22 0 11-7.9 19.2-18.9 19.2C12.7 83.1 5 72.6 5 61.5c0-19.2 18-44.6 29.2-44.6 2.8 0 7.9 2 7.9 5.4S30.7 31.6 30.7 42zM82.4 42c0 6.1 12.6 7 12.6 22 0 11-7.9 19.2-18.9 19.2-11.8 0-19.5-10.5-19.5-21.6 0-19.2 18-44.6 29.2-44.6 2.8 0 7.9 2 7.9 5.4S82.4 31.6 82.4 42z" />
                                     </svg>
-                                    <p class="mt-2 text-base text-gray-600">Finally a quick and easy system I can use
+                                    <p [ngStyle]="{'color': neutralWUserColor, 'font-size':paragraphSizeUser}"
+                                        class="mt-2 text-base text-gray-600">Finally a quick and easy system I can use
                                         for any type of
                                         project.</p>
                                 </div>
 
-                                <h3 class="pl-12 mt-3 text-base font-medium leading-5 text-gray-800 truncate">Molly
-                                    Sanchez <span class="mt-1 text-sm leading-5 text-gray-500 truncate">- CEO
+                                <h3 [ngStyle]="{'color': neutralWUserColor, 'font-size':subtitleSizeUser}"
+                                    class="pl-12 mt-3 text-base font-medium leading-5 text-gray-800 truncate">Molly
+                                    Sanchez <span [ngStyle]="{'color': neutralWUserColor, 'font-size':subtitleSizeUser}"
+                                        class="mt-1 text-sm leading-5 text-gray-500 truncate">- CEO
                                         SomeCompany</span></h3>
                                 <p class="mt-1 text-sm leading-5 text-gray-500 truncate"></p>
                             </div>
@@ -678,13 +960,15 @@
     <!-- End Testimonials-->
 
 
-    <footer class="px-4 pt-12 pb-8 text-white bg-white border-t border-gray-200">
+    <footer [ngStyle]="{'background-color': neutralBUserColor}"
+        class="px-4 pt-12 pb-8 text-white bg-white border-t border-gray-200">
         <div class="container flex flex-col justify-between max-w-6xl px-4 mx-auto overflow-hidden lg:flex-row">
             <div class="w-full pl-12 mr-4 text-left lg:w-1/4 sm:text-center sm:pl-0 lg:text-left">
                 <a href="/"
                     class="flex justify-start block text-left sm:text-center lg:text-left sm:justify-center lg:justify-start">
                     <span class="flex items-start sm:items-center">
-                        <svg class="w-auto h-6 text-gray-800 fill-current" viewBox="0 0 194 116"
+                        <svg [ngStyle]="{'color': complementUserColor, 'font-size':paragraphSizeUser}"
+                            class="w-auto h-6 text-gray-800 fill-current" viewBox="0 0 194 116"
                             xmlns="http://www.w3.org/2000/svg">
                             <g fill-rule="evenodd">
                                 <path
@@ -695,50 +979,59 @@
                         </svg>
                     </span>
                 </a>
-                <p class="mt-6 mr-4 text-base text-gray-500">Crafting the next-level of user experience and engagement.
+                <p [ngStyle]="{'color': neutralWUserColor, 'font-size':paragraphSizeUser}"
+                    class="mt-6 mr-4 text-base text-gray-500">Crafting the next-level of user experience and engagement.
                 </p>
             </div>
             <div class="block w-full pl-10 mt-6 text-sm lg:w-3/4 sm:flex lg:mt-0">
                 <ul class="flex flex-col w-full p-0 font-medium text-left text-gray-700 list-none">
-                    <li class="inline-block px-3 py-2 mt-5 font-bold tracking-wide text-gray-800 uppercase md:mt-0">
+                    <li [ngStyle]="{'color': complementUserColor, 'font-size':paragraphSizeUser}"
+                        class="inline-block px-3 py-2 mt-5 font-bold tracking-wide text-gray-800 uppercase md:mt-0">
                         Product</li>
-                    <li><a href="#_"
+                    <li><a href="#_" [ngStyle]="{'color': neutralWUserColor, 'font-size':paragraphSizeUser}"
                             class="inline-block px-3 py-2 text-gray-500 no-underline hover:text-gray-600">Features</a>
                     </li>
-                    <li><a href="#_"
+                    <li><a href="#_" [ngStyle]="{'color': neutralWUserColor, 'font-size':paragraphSizeUser}"
                             class="inline-block px-3 py-2 text-gray-500 no-underline hover:text-gray-600">Integrations</a>
                     </li>
-                    <li><a href="#_"
+                    <li><a href="#_" [ngStyle]="{'color': neutralWUserColor, 'font-size':paragraphSizeUser}"
                             class="inline-block px-3 py-2 text-gray-500 no-underline hover:text-gray-600">Pricing</a>
                     </li>
-                    <li><a href="#_"
+                    <li><a href="#_" [ngStyle]="{'color': neutralWUserColor, 'font-size':paragraphSizeUser}"
                             class="inline-block px-3 py-2 text-gray-500 no-underline hover:text-gray-600">FAQ</a></li>
                 </ul>
                 <ul class="flex flex-col w-full p-0 font-medium text-left text-gray-700 list-none">
-                    <li class="inline-block px-3 py-2 mt-5 font-bold tracking-wide text-gray-800 uppercase md:mt-0">
+                    <li [ngStyle]="{'color': complementUserColor, 'font-size':paragraphSizeUser}"
+                        class="inline-block px-3 py-2 mt-5 font-bold tracking-wide text-gray-800 uppercase md:mt-0">
                         Company</li>
-                    <li><a href="#_"
+                    <li><a href="#_" [ngStyle]="{'color': neutralWUserColor, 'font-size':paragraphSizeUser}"
                             class="inline-block px-3 py-2 text-gray-500 no-underline hover:text-gray-600">Privacy</a>
                     </li>
-                    <li><a href="#_" class="inline-block px-3 py-2 text-gray-500 no-underline hover:text-gray-600">Terms
+                    <li><a [ngStyle]="{'color': neutralWUserColor, 'font-size':paragraphSizeUser}" href="#_"
+                            class="inline-block px-3 py-2 text-gray-500 no-underline hover:text-gray-600">Terms
                             of
                             Service</a></li>
                 </ul>
                 <ul class="flex flex-col w-full p-0 font-medium text-left text-gray-700 list-none">
-                    <li class="inline-block px-3 py-2 mt-5 font-bold tracking-wide text-gray-800 uppercase md:mt-0">
+                    <li [ngStyle]="{'color': complementUserColor, 'font-size':paragraphSizeUser}"
+                        class="inline-block px-3 py-2 mt-5 font-bold tracking-wide text-gray-800 uppercase md:mt-0">
                         TailwindCSS
                     </li>
-                    <li><a href="https://devdojo.com/tailwindcss/components"
+                    <li><a [ngStyle]="{'color': neutralWUserColor, 'font-size':paragraphSizeUser}"
+                            href="https://devdojo.com/tailwindcss/components"
                             class="inline-block px-3 py-2 text-gray-500 no-underline hover:text-gray-600">Tailwind
                             Components</a></li>
-                    <li><a href="https://devdojo.com/tailwindcss/templates"
+                    <li><a [ngStyle]="{'color': neutralWUserColor, 'font-size':paragraphSizeUser}"
+                            href="https://devdojo.com/tailwindcss/templates"
                             class="inline-block px-3 py-2 text-gray-500 no-underline hover:text-gray-600">Tailwind
                             Templates</a></li>
-                    <li><a href="https://devdojo.com/tails"
+                    <li><a [ngStyle]="{'color': neutralWUserColor, 'font-size':paragraphSizeUser}"
+                            href="https://devdojo.com/tails"
                             class="inline-block px-3 py-2 text-gray-500 no-underline hover:text-gray-600">Tails</a></li>
                 </ul>
                 <div class="flex flex-col w-full text-gray-700">
-                    <div class="inline-block px-3 py-2 mt-5 font-bold text-gray-800 uppercase md:mt-0">Follow Us</div>
+                    <div [ngStyle]="{'color': complementUserColor, 'font-size':paragraphSizeUser}"
+                        class="inline-block px-3 py-2 mt-5 font-bold text-gray-800 uppercase md:mt-0">Follow Us</div>
                     <div class="flex justify-start pl-4 mt-2">
                         <a class="flex items-center block mr-6 text-gray-400 no-underline hover:text-gray-600"
                             target="_blank" rel="noopener noreferrer" href="https://devdojo.com">
@@ -765,11 +1058,7 @@
                 </div>
             </div>
         </div>
-        <div class="pt-4 pt-6 mt-10 text-center text-gray-500 border-t border-gray-100">© 2020 Landmark. All rights
-            reserved.</div>
 
-        <div class="pt-2 pt-4 mt-2 text-center text-gray-600 border-t border-gray-100">Distributed By <a
-                href="https://themewagon.com/">Themewagon</a></div>
     </footer>
 
     <!-- a little JS for the mobile nav button -->

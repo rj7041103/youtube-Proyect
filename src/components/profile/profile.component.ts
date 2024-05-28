@@ -51,6 +51,7 @@ export class ProfileComponent {
   @ViewChild('state') inputState!: ElementRef;
 
   postUserTemplate = {
+    id: '52',
     avatar: '',
     name: '',
     lastname: '',
@@ -103,14 +104,15 @@ export class ProfileComponent {
   }
 
   upLoadChanges() {
-    this.postUserTemplate.avatar = this.inputImage.nativeElement.value;
+    this.postUserTemplate.avatar =
+      'https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/413.jpg';
     this.postUserTemplate.name = this.inputName.nativeElement.value;
     this.postUserTemplate.lastname = this.inputLastname.nativeElement.value;
     this.postUserTemplate.email = this.inputEmail.nativeElement.value;
     this.postUserTemplate.ci = this.inputCi.nativeElement.value;
     this.postUserTemplate.phone = this.inputPhone.nativeElement.value;
     this.postUserTemplate.address = this.inputAddres.nativeElement.value;
-    this.postUserTemplate.status = 'Active';
+    this.postUserTemplate.status = 'true';
     console.log(this.postUserTemplate);
     this.service.postUser(this.postUserTemplate);
     this.route.navigateByUrl('');

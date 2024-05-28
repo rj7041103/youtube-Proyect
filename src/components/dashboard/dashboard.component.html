@@ -10,12 +10,13 @@
 </head>
 
 
-<body class=" bg-surface">
+<body class=" bg-surface" [ngStyle]="{'background-color': principalColorDashboard}">
     <main>
         <!--start the project-->
         <div id="main-wrapper" class=" flex p-5 xl:pr-0">
             <aside id="application-sidebar-brand"
-                class="hs-overlay hs-overlay-open:translate-x-0 -translate-x-full  transform hidden xl:block xl:translate-x-0 xl:end-auto xl:bottom-0 fixed xl:top-5 xl:left-auto top-0 left-0 with-vertical h-screen z-[999] shrink-0  w-[270px] shadow-md xl:rounded-md rounded-none bg-white left-sidebar   transition-all duration-300">
+                class="hs-overlay hs-overlay-open:translate-x-0 -translate-x-full  transform hidden xl:block xl:translate-x-0 xl:end-auto xl:bottom-0 fixed xl:top-5 xl:left-auto top-0 left-0 with-vertical h-screen z-[999] shrink-0  w-[270px] shadow-md xl:rounded-md rounded-none left-sidebar   transition-all duration-300"
+                [ngStyle]="{'background-color': principalColorDashboard}">
                 <!-- ---------------------------------- -->
                 <!-- Start Vertical Layout Sidebar -->
                 <!-- ---------------------------------- -->
@@ -31,18 +32,24 @@
                     <nav class=" w-full flex flex-col sidebar-nav px-4 mt-5">
                         <ul id="sidebarnav" class="text-gray-600 text-sm">
 
-                            <li class="text-xs font-bold pb-[5px]">
-                                <i class="ti ti-dots nav-small-cap-icon text-lg hidden text-center"></i>
-                                <span class="text-xs text-gray-400 font-semibold">HOME</span>
-                            </li>
-
                             <li class="sidebar-item">
-                                <a class=" cursor-pointer sidebar-link gap-3 py-2.5 my-1 text-base  flex items-center relative  rounded-md text-gray-500  w-full"
-                                    (click)="toggleComponentVisibility()">
+                                <a class=" cursor-pointer sidebar-link gap-3 py-2.5 my-1 text-base  flex items-center relative  rounded-md   w-full"
+                                    (click)="toggleComponentVisibility()"
+                                    [ngStyle]="{'color': fontColorDashboard, 'font-size': fontSizeParagraph}">
                                     <i class="pi pi-user" style="font-size: 2.5rem"></i><span>Users</span>
                                 </a>
                             </li>
+
+                            <li class="sidebar-item">
+                                <a class=" cursor-pointer sidebar-link gap-3 py-2.5 my-1 text-base  flex items-center relative  rounded-md   w-full"
+                                    (click)="toggleComponentVisibilityConfigColor()"
+                                    [ngStyle]="{'color': fontColorDashboard, 'font-size': fontSizeParagraph}">
+                                    <i class="pi pi-user" style="font-size: 2.5rem"></i><span>Config Color</span>
+                                </a>
+                            </li>
+
                         </ul>
+
                     </nav>
                 </div>
                 <!-- </aside> -->
@@ -53,8 +60,8 @@
                 <main class="h-full  max-w-full">
                     <div class="container relative full-container p-0 flex flex-col gap-6">
                         <!--  Header Start -->
-                        <header
-                            class=" bg-white flex justify-center shadow-md relative rounded-md w-10/12 text-sm py-4 px-6">
+                        <header class=" flex justify-center shadow-md relative rounded-md w-10/12 text-sm py-4 px-6"
+                            [ngStyle]="{'background-color': principalColorDashboard}">
 
 
                             <!-- ========== HEADER ========== -->
@@ -65,6 +72,7 @@
                                     <li class="relative xl:hidden">
                                         <a class="text-xl  icon-hover cursor-pointer text-heading" id="headerCollapse"
                                             data-hs-overlay="#application-sidebar-brand"
+                                            [ngStyle]="{'color': fontColorDashboard, 'font-size': fontSizeParagraph}"
                                             aria-controls="application-sidebar-brand" aria-label="Toggle navigation"
                                             href="javascript:void(0)">
                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="24"
@@ -76,8 +84,9 @@
                                     </li>
                                 </ul>
                                 <div class="flex items-center gap-4">
-                                    <span href="#" class=" text-base font-medium text-slate-900"
-                                        aria-current="page">Savedra</span>
+                                    <span href="#" class=" font-medium "
+                                        [ngStyle]="{'color': fontColorDashboard, 'font-size': fontSizeParagraph}">
+                                        Savedra</span>
                                     <div
                                         class="hs-dropdown relative inline-flex [--placement:bottom-right] sm:[--trigger:hover]">
                                         <a class="relative hs-dropdown-toggle cursor-pointer align-middle rounded-full">
@@ -87,15 +96,18 @@
                                         <div class="card hs-dropdown-menu transition-[opacity,margin] rounded-md duration hs-dropdown-open:opacity-100 opacity-0 mt-2 min-w-max  w-[200px] hidden z-[12]"
                                             aria-labelledby="hs-dropdown-custom-icon-trigger">
                                             <div class="card-body p-0 py-2">
-                                                <a href="javscript:void(0)"
+                                                <div
                                                     class="flex gap-2 items-center font-medium px-4 py-1.5 hover:bg-gray-200 text-gray-400">
                                                     <i class="ti ti-user  text-xl "></i>
-                                                    <p class="text-sm ">My Profile</p>
-                                                </a>
+                                                    <p class="text-sm "
+                                                        [ngStyle]="{'color': fontColorDashboard, 'font-size': fontSizeParagraph}">
+                                                        My Profile</p>
+                                                </div>
 
                                                 <div class="px-4 mt-[7px] grid">
-                                                    <a [routerLink]="['/login']" routerLinkActive="router-link-active"
-                                                        class="btn-outline-primary font-medium text-[15px] w-full hover:bg-blue-600 hover:text-white">Logout</a>
+                                                    <button (click)='logout()' routerLinkActive="router-link-active"
+                                                        [ngStyle]="{'background-color': btnBgDashboardForm, 'color': fontColorBtnDashboardForm, 'font-size': fontSizeParagraph}"
+                                                        class="btn-outline-primary font-medium text-[15px] w-full hover:bg-blue-600 hover:text-white">Logout</button>
                                                 </div>
 
                                             </div>
@@ -110,15 +122,13 @@
                         </header>
 
                         <div class="flex h-auto  justify-start items-center p-3  ">
-                            <p-dialog header="Header" [modal]="true" #dialog
+                            <p-dialog [id]="idUser" header="Header" [modal]="true" #dialog
                                 [style]="{ width: '500px', height: '500px',zIndex: 999 }" [(visible)]="showDialog">
                                 <ng-template pTemplate="header">
                                     <div class="inline-flex align-items-center justify-content-center gap-2">
-                                        <p-avatar
-                                            image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png"
-                                            shape="circle" />
+                                        <p-avatar [image]="imageAvatar" shape="circle" />
                                         <span class="font-bold white-space-nowrap">
-                                            Amy Elsner
+                                            {{nameBadgedAvatar}}
                                         </span>
                                     </div>
                                 </ng-template>
@@ -138,55 +148,55 @@
                                     </label>
                                     <input pInputText id="name"
                                         class="flex w-full p-2 pl-3 justify-around items-center rounded-md"
-                                        autocomplete="on" type="text" minlength="3" />
+                                        autocomplete="on" type="text" minlength="3" #name />
                                 </div>
                                 <div class="flex relative items-center justify-start gap-2 mb-4">
                                     <label for="userlastname" class="font-semibold w-6rem">
                                         Lastname
                                     </label>
                                     <input pInputText id="lastname" class=" flex-auto rounded-md" autocomplete="on"
-                                        type="text" minlength="3" />
+                                        type="text" minlength="3" #lastname />
                                 </div>
                                 <div class="flex relative items-center justify-around gap-2 mb-4">
                                     <label for="ci" class="font-semibold w-6rem">CI</label>
                                     <input pInputText id="ci" class="flex-auto rounded-md" autocomplete="on"
-                                        type="number" maxlength="8" pattern="/^\d+$/" />
+                                        type="number" maxlength="8" pattern="/^\d+$/" #ci />
                                 </div>
                                 <div class="flex relative items-center justify-around gap-2 mb-4">
                                     <label for="email" class="font-semibold w-6rem">Email</label>
                                     <input pInputText id="email" class="flex-auto rounded-md" autocomplete="on"
-                                        type="email" minlength="3" pattern="/^[^\s@]+@[^\s@]+\.[^\s@]+$/" />
+                                        type="email" minlength="10" #email />
                                 </div>
                                 <div class="flex relative items-center justify-around gap-2 mb-4">
                                     <label for="phone" class="font-semibold w-6rem">Phone</label>
                                     <input pInputText id="phone" class="flex-auto rounded-md" autocomplete="on"
-                                        type="number" maxlength="11" pattern="/^\d{1,11}$/" />
+                                        type="number" minlength="3" #phone />
                                 </div>
                                 <div class="flex relative items-center justify-around gap-2 mb-4">
                                     <label for="address" class="font-semibold w-6rem">Address</label>
                                     <input pInputText id="address" class="flex-auto rounded-md" autocomplete="on"
-                                        type="text" minlength="3" />
+                                        type="text" minlength="3" #address />
                                 </div>
                                 <div class="flex relative items-center justify-around gap-2 mb-4">
                                     <label for="state" class="font-semibold w-6rem">State</label>
                                     <input pInputText id="state" class="flex-auto rounded-md" autocomplete="on"
-                                        type="text" minlength="3" />
+                                        type="text" minlength="3" #state />
                                 </div>
                                 <div class="flex relative items-center justify-around gap-2 mb-4">
                                     <label for="city" class="font-semibold w-6rem">City</label>
                                     <input pInputText id="city" class="flex-auto rounded-md" autocomplete="on"
-                                        type="text" minlength="3" />
+                                        type="text" minlength="3" #city />
                                 </div>
                                 <ng-template pTemplate="footer" class="flex justify-end gap-2">
                                     <button
                                         class=" bg-[#3B82F6] mr-3 text-neutral-100 active:-scale-[0.9] rounded-md p-[5px]"
-                                        (click)="toggleShowVisibility()">Save</button>
+                                        (click)="postUser(idUser)">Save</button>
                                     <button
                                         class="active:border-sky-500 mr-3 active:-scale-[0.9] text-gray-800 rounded-md"
-                                        (click)="toggleShowVisibility()">Cancel</button>
+                                        (click)="toggleModal()">Cancel</button>
                                 </ng-template>
                             </p-dialog>
-                            @if(showComponent){
+                            @if(showUserComponent){
                             <div class="flex-col relative justify-center items-center w-10/12">
                                 <div class="flex justify-end align-items-center mb-4">
                                     <p-autoComplete [suggestions]="userlist" [dropdown]="true"
@@ -203,68 +213,89 @@
 
                                     <ng-template pTemplate="header">
 
-                                        <tr>
+                                        <tr [ngStyle]="{'background-color': secundaryColorDashboard}">
                                             <th pSortableColumn="avatar" style="min-width: 14rem">
-                                                <div class="flex justify-content-between align-items-center">
+                                                <div class="flex justify-center items-center"
+                                                    [ngStyle]="{
+                                                    'color': fontColorDashboard, 'font-size': fontSizeSubtitle,'background-color': secundaryColorDashboard}">
                                                     Avatar
                                                 </div>
                                             </th>
                                             <th pSortableColumn="name" style="min-width: 14rem">
-                                                <div class="flex justify-content-between align-items-center">
+                                                <div class="flex justify-center items-center"
+                                                    [ngStyle]="{
+                                                    'color': fontColorDashboard, 'font-size': fontSizeSubtitle,'background-color': secundaryColorDashboard}">
                                                     Name
 
                                                 </div>
                                             </th>
                                             <th pSortableColumn="lastname" style="min-width: 14rem">
-                                                <div class="flex justify-content-between align-items-center">
+                                                <div class="flex justify-center items-center"
+                                                    [ngStyle]="{
+                                                    'color': fontColorDashboard, 'font-size': fontSizeSubtitle,'background-color': secundaryColorDashboard}">
                                                     Lastname
 
                                                 </div>
                                             </th>
 
                                             <th style=" min-width: 10rem">
-                                                <div class="flex justify-content-between align-items-center">
+                                                <div class="flex justify-center items-center"
+                                                    [ngStyle]="{
+                                                    'color': fontColorDashboard, 'font-size': fontSizeSubtitle, 'background-color': secundaryColorDashboard}">
                                                     DNI
                                                 </div>
                                             </th>
 
                                             <th style=" min-width: 10rem">
-                                                <div class="flex justify-content-between align-items-center">
+                                                <div class="flex justify-center items-center"
+                                                    [ngStyle]="{
+                                                    'color': fontColorDashboard, 'font-size': fontSizeSubtitle, 'background-color': secundaryColorDashboard}">
                                                     Email
                                                 </div>
                                             </th>
                                             <th pSortableColumn="phone" style="min-width: 10rem">
-                                                <div class="flex justify-content-between align-items-center">
+                                                <div class="flex justify-center items-center"
+                                                    [ngStyle]="{
+                                                    'color': fontColorDashboard, 'font-size': fontSizeSubtitle, 'background-color': secundaryColorDashboard}">
                                                     Phone
                                                 </div>
                                             </th>
                                             <th style=" min-width: 10rem">
-                                                <div class="flex justify-content-between align-items-center">
+                                                <div class="flex justify-center items-center"
+                                                    [ngStyle]="{
+                                                    'color': fontColorDashboard, 'font-size': fontSizeSubtitle, 'background-color': secundaryColorDashboard}">
                                                     State
                                                 </div>
                                             </th>
                                             <th style=" min-width: 10rem">
-                                                <div class="flex justify-content-between align-items-center">
+                                                <div class="flex justify-center items-center"
+                                                    [ngStyle]="{
+                                                    'color': fontColorDashboard, 'font-size': fontSizeSubtitle, 'background-color': secundaryColorDashboard}">
                                                     City
                                                 </div>
                                             </th>
                                             <th style=" min-width: 10rem">
-                                                <div class="flex justify-content-between align-items-center">
+                                                <div class="flex justify-center items-center"
+                                                    [ngStyle]="{
+                                                    'color': fontColorDashboard, 'font-size': fontSizeSubtitle, 'background-color': secundaryColorDashboard}">
                                                     Address
                                                 </div>
                                             </th>
 
                                             <th pSortableColumn="status" style="min-width: 10rem">
-                                                <div class="flex justify-content-between align-items-center">
+                                                <div class="flex justify-center items-center"
+                                                    [ngStyle]="{
+                                                    'color': fontColorDashboard, 'font-size': fontSizeSubtitle, 'background-color': secundaryColorDashboard}">
                                                     Status
                                                 </div>
                                             </th>
                                             <th pSortableColumn="status" style="min-width: 10rem">
-                                                <div class="flex justify-content-between align-items-center">
+                                                <div class="flex justify-center items-center"
+                                                    [ngStyle]="{
+                                                    'color': fontColorDashboard, 'font-size': fontSizeSubtitle, 'background-color': secundaryColorDashboard}">
                                                     Action
                                                 </div>
                                             </th>
-                                            <th style="width: 5rem"></th>
                                         </tr>
                                     </ng-template>
 
@@ -272,58 +303,79 @@
 
 
                                         <tr *ngFor="let user of (users$ | async); trackBy: trackUser "
-                                            class="p-selectable-row" [id]="user?.id">
+                                            class="p-selectable-row" [id]="user?.id"
+                                            [ngStyle]="{'background-color': secundaryColorDashboard}">
                                             <td>
                                                 <p-avatar [image]="user?.avatar" styleClass="mr-2" size="xlarge"
                                                     shape="circle"></p-avatar>
                                             </td>
-                                            <td>
+                                            <td [ngStyle]="{
+                                                'color': fontColorDashboard, 'font-size': fontSizeParagraph}">
                                                 {{ user?.name ?? 'No Name' }}
                                             </td>
                                             <td>
-                                                <span class="ml-1 vertical-align-middle">{{ user?.lastname ?? 'No
+                                                <span class="ml-1 vertical-align-middle" [ngStyle]="{
+                                                    'color': fontColorDashboard, 'font-size': fontSizeParagraph}">{{
+                                                    user?.lastname ?? 'No
                                                     lastname' }}</span>
                                             </td>
                                             <td>
-                                                <span class="ml-1 vertical-align-middle">{{ user?.ci?? 'No dni'
+                                                <span class="ml-1 vertical-align-middle" [ngStyle]="{
+                                                    'color': fontColorDashboard, 'font-size': fontSizeParagraph}">{{
+                                                    user?.ci?? 'No dni'
                                                     }}</span>
                                             </td>
                                             <td>
-                                                <span class="ml-1 vertical-align-middle">{{ user?.email ?? 'No email'
-                                                    }}</span>
-
-                                            </td>
-                                            <td>
-                                                <span class="ml-1 vertical-align-middle">{{ user?.phone ?? 'No phone'
-                                                    }}</span>
-
-                                            </td>
-                                            <td>
-                                                <span class="ml-1 vertical-align-middle">{{ user?.state ?? 'No state'
+                                                <span class="ml-1 vertical-align-middle" [ngStyle]="{
+                                                    'color': fontColorDashboard, 'font-size': fontSizeParagraph}">{{
+                                                    user?.email ?? 'No email'
                                                     }}</span>
 
                                             </td>
                                             <td>
-                                                <span class="ml-1 vertical-align-middle">{{ user?.city ?? 'No city'
+                                                <span class="ml-1 vertical-align-middle" [ngStyle]="{
+                                                    'color': fontColorDashboard, 'font-size': fontSizeParagraph}">{{
+                                                    user?.phone ?? 'No phone'
                                                     }}</span>
 
                                             </td>
                                             <td>
-                                                <span class="ml-1 vertical-align-middle"> {{ user?.address ?? 'No
+                                                <span class="ml-1 vertical-align-middle" [ngStyle]="{
+                                                    'color': fontColorDashboard, 'font-size': fontSizeParagraph}">{{
+                                                    user?.state ?? 'No state'
+                                                    }}</span>
+
+                                            </td>
+                                            <td>
+                                                <span class="ml-1 vertical-align-middle" [ngStyle]="{
+                                                    'color': fontColorDashboard, 'font-size': fontSizeParagraph}">{{
+                                                    user?.city ?? 'No city'
+                                                    }}</span>
+
+                                            </td>
+                                            <td>
+                                                <span class="ml-1 vertical-align-middle" [ngStyle]="{
+                                                    'color': fontColorDashboard, 'font-size': fontSizeParagraph}"> {{
+                                                    user?.address ?? 'No
                                                     addres' }}</span>
 
                                             </td>
 
                                             <td>
                                                 <span class="p-column-title">Status</span>
-                                                <p-tag [value]="customer?.status"
-                                                    [severity]="getSeverity(customer.status)"></p-tag>
+                                                <p-tag [value]="user?.status" [severity]="getSeverity(user?.status)"
+                                                    [ngStyle]="{
+                                                        'color': fontColorDashboard, 'font-size': fontSizeParagraph}"></p-tag>
                                             </td>
                                             <td>
                                                 <div class="flex justify-around items-center">
-                                                    <p-button label="sig out" [rounded]="true"
-                                                        severity="danger"></p-button>
-                                                    <p-button (click)="toggleShowVisibility()" label="Edit" />
+                                                    <p-button (click)="updateUserStatus(user.id)" label="sig out"
+                                                        [rounded]="true" severity="danger"
+                                                        [ngStyle]="{
+                                                            'color': fontColorDashboard, 'font-size': fontSizeParagraph}"></p-button>
+                                                    <p-button (click)="toggleShowDialogVisibility(user.id)" label="Edit"
+                                                        [ngStyle]="{
+                                                            'color': fontColorDashboard, 'font-size': fontSizeParagraph}" />
 
                                                 </div>
                                             </td>
@@ -332,13 +384,315 @@
                                     </ng-template>
                                     <ng-template pTemplate="emptymessage">
                                         <tr>
-                                            <td colspan="8">No customers found.</td>
+                                            <td colspan="8" [ngStyle]="{
+                                                'color': fontColorDashboard, 'font-size': fontSizeParagraph}">No
+                                                customers found.</td>
                                         </tr>
                                     </ng-template>
                                 </p-table>
                             </div>
                             }
 
+                            @if(showConfigColor){
+
+                            <div [ngStyle]="{'background-color': secundaryColorDashboard}"
+                                class="flex relative justify-center items-center w-11/12 text-center gap-3 p-3">
+
+                                <div [ngStyle]="{'background-color': secundaryColorDashboard}"
+                                    class="flex-col relative justify-center items-center w-full text-center gap-3 p-3">
+
+                                    <label for="tituloForm" class="block mb-4 text-2xl font-medium  dark:text-white"
+                                        [ngStyle]="{'color': fontColorDashboard ,'font-size':  fontSizeSubtitle}">1.68
+                                        font
+                                        size rule
+                                    </label>
+
+                                    <form class="max-w-sm mx-auto">
+                                        <div class="mb-5">
+                                            <label for="principalColorDashboard"
+                                                class="block mb-2 text-sm font-medium  dark:text-white"
+                                                [ngStyle]="{'color': fontColorDashboard ,'font-size': fontSizeParagraph}">Principal
+                                                color</label>
+                                            <input type="color" id="principalColor" class="w-full h-[50px] " required
+                                                #principalColor [(ngModel)]="principalColorDashboard"
+                                                name="principalColorDashboard" />
+                                        </div>
+                                        <div class="mb-5">
+                                            <label for="secundaryColor"
+                                                class="block mb-2 text-sm font-medium  dark:text-white"
+                                                [ngStyle]="{'color': fontColorDashboard ,'font-size': fontSizeParagraph}">Secundary
+                                                color</label>
+                                            <input type="color" id="secundaryColor" class="w-full h-[50px] " required
+                                                #secundaryColor [(ngModel)]="secundaryColorDashboard"
+                                                name="secundaryColorDashboard" />
+                                        </div>
+
+                                        <div class="mb-5">
+                                            <label for="btnBgColorForm"
+                                                class="block mb-2 text-sm font-medium  dark:text-white"
+                                                [ngStyle]="{'color': fontColorDashboard ,'font-size': fontSizeParagraph}">Button
+                                                backgroundcolor
+                                            </label>
+                                            <input type="color" id="btnBgColorForm" class="w-full h-[50px] " required
+                                                #btnBgColorForm [(ngModel)]="btnBgDashboardForm"
+                                                name="btnBgDashboardForm" />
+                                        </div>
+
+                                        <div class="mb-5">
+                                            <label for="fontColorDB"
+                                                class="block mb-2 text-sm font-medium  dark:text-white"
+                                                [ngStyle]="{'color': fontColorDashboard ,'font-size': fontSizeParagraph}">Font
+                                                color</label>
+                                            <input type="color" id="fontColorDB" class="w-full h-[50px] " required
+                                                #fontColorDB [(ngModel)]="fontColorDashboard"
+                                                name="fontColorDashboard" />
+                                        </div>
+
+                                        <div class="mb-5">
+                                            <label for="fontBtnColorForm"
+                                                class="block mb-2 text-sm font-medium  dark:text-white"
+                                                [ngStyle]="{'color': fontColorDashboard ,'font-size': fontSizeParagraph}">Button
+                                                font color
+                                            </label>
+                                            <input type="color" id="fontBtnColorForm" class="w-full h-[50px] " required
+                                                #fontBtnColorForm [(ngModel)]="fontColorBtnDashboardForm"
+                                                name="fontColorBtnDashboardForm" />
+                                        </div>
+
+                                        <div class="mb-5">
+                                            <label for="ParagraphSize" class="block mb-2  font-medium  dark:text-white"
+                                                [ngStyle]="{'color': fontColorDashboard ,'font-size': fontSizeParagraph}">
+                                                Paragraph Size
+                                            </label>
+                                            <input type="number" id="paragraphsize"
+                                                class="shadow-sm bg-gray-50 border border-gray-300  rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+                                                (change)="changeSizeParagraphSize()" required #paragraphsizeDashboard
+                                                [ngStyle]="{'color': fontColorDashboard, 'font-size': fontSizeParagraph }" />
+                                        </div>
+                                        <div class="mb-5">
+                                            <label for="SubtitleSize"
+                                                class="block mb-2 text-sm font-medium dark:text-white"
+                                                [ngStyle]="{'color': fontColorDashboard,'font-size': fontSizeParagraph}">
+                                                Subtitle Size
+                                            </label>
+                                            <input type="number" id="subtitlesize" disabled
+                                                class="shadow-sm bg-gray-50 border border-gray-300   rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+                                                required #subtitlesizeDashboard
+                                                [ngStyle]="{'color': fontColorDashboard, 'font-size': fontSizeParagraph}" />
+                                        </div>
+                                        <div class="mb-5">
+                                            <label for="TitleSize"
+                                                class="block mb-2 text-sm font-medium  dark:text-white"
+                                                [ngStyle]="{'color': fontColorDashboard, 'font-size': fontSizeParagraph}">
+                                                Title Size
+                                            </label>
+                                            <input type="number" id="titlesize" disabled
+                                                class="shadow-sm bg-gray-50 border border-gray-300  text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+                                                required #titlesizeDashboard
+                                                [ngStyle]="{'color': fontColorDashboard, 'font-size': fontSizeParagraph}" />
+                                        </div>
+                                        <button type="submit" (click)="saveChangesDashboard()"
+                                            [ngStyle]="{'color': fontColorBtnDashboardForm, 'background-color': btnBgDashboardForm, 'font-size': fontSizeParagraph}"
+                                            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Save
+                                            Changes
+                                        </button>
+                                    </form>
+
+                                </div>
+
+                                <div [ngStyle]="{'background-color': secundaryColorDashboard}"
+                                    class="flex-col relative justify-center items-center w-full text-center gap-3 p-3">
+
+                                    <label for="tituloForm" class="block mb-4 text-2xl font-medium  dark:text-white"
+                                        [ngStyle]="{'color': fontColorDashboard ,'font-size':  fontSizeSubtitle}">User
+                                        Interface
+                                    </label>
+
+                                    <form class="max-w-sm mx-auto">
+                                        <div class="mb-5">
+                                            <label for="principalColorUser"
+                                                class="block mb-2 text-sm font-medium  dark:text-white"
+                                                [ngStyle]="{'color': fontColorDashboard ,'font-size': fontSizeParagraph}">Principal
+                                                color</label>
+                                            <input type="color" id="principalColor" class="w-full h-[50px] " required
+                                                #principalColorUser [(ngModel)]="principalColorUserI"
+                                                name="principalColorUserI" (change)="colorPallet()" />
+                                        </div>
+                                        <div class="mb-5">
+                                            <label for="secundaryColorUser"
+                                                class="block mb-2 text-sm font-medium  dark:text-white"
+                                                [ngStyle]="{'color': fontColorDashboard ,'font-size': fontSizeParagraph}">Secundary
+                                                color</label>
+                                            <input type="color" id="secundaryColor" class="w-full h-[50px] " required
+                                                #secundaryColorUser [(ngModel)]="secundaryColorUserI"
+                                                name="secundaryColorUserI" />
+                                        </div>
+
+                                        <div class="mb-5">
+                                            <label for="neutralColor1"
+                                                class="block mb-2 text-sm font-medium  dark:text-white"
+                                                [ngStyle]="{'color': fontColorDashboard ,'font-size': fontSizeParagraph}">Neutral
+                                                Color 1</label>
+                                            <input type="color" id="neutralColor1" class="w-full h-[50px] " required
+                                                #neutralColor1 [(ngModel)]="neutralColorI1" name="neutralColorI1" />
+                                        </div>
+
+                                        <div class="mb-5">
+                                            <label for="neutralColor2"
+                                                class="block mb-2 text-sm font-medium  dark:text-white"
+                                                [ngStyle]="{'color': fontColorDashboard ,'font-size': fontSizeParagraph}">Neutral
+                                                Color 2
+                                            </label>
+                                            <input type="color" id="neutralColor2" class="w-full h-[50px] " required
+                                                #neutralColor2 [(ngModel)]="neutralColorI2" name="neutralColorI2" />
+                                        </div>
+
+                                        <div class="mb-5">
+                                            <label for="complementColorUser"
+                                                class="block mb-2 text-sm font-medium  dark:text-white"
+                                                [ngStyle]="{'color': fontColorDashboard ,'font-size': fontSizeParagraph}">Complement
+                                                Color
+                                            </label>
+                                            <input type="color" id="complementColorUser" class="w-full h-[50px] "
+                                                required #complementColorUser [(ngModel)]="complementColorUserI"
+                                                name="complementColorUserI" />
+                                        </div>
+
+                                        <div class="mb-5">
+                                            <label for="paragraphSizeUser"
+                                                class="block mb-2  font-medium  dark:text-white"
+                                                [ngStyle]="{'color': fontColorDashboard ,'font-size': fontSizeParagraph}">
+                                                Paragraph Size
+                                            </label>
+                                            <input type="number" id="paragraphSizeUser"
+                                                class="shadow-sm bg-gray-50 border border-gray-300  rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+                                                (change)="changeSizeParagraphSizeUser()" required #paragraphSizeUser
+                                                [ngStyle]="{'color': fontColorDashboard, 'font-size': fontSizeParagraph }" />
+                                        </div>
+                                        <div class="mb-5">
+                                            <label for="subtitleSizeUser"
+                                                class="block mb-2 text-sm font-medium dark:text-white"
+                                                [ngStyle]="{'color': fontColorDashboard,'font-size': fontSizeParagraph}">
+                                                Subtitle Size
+                                            </label>
+                                            <input type="number" id="subtitleSizeUser" disabled
+                                                class="shadow-sm bg-gray-50 border border-gray-300   rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+                                                required #subtitleSizeUser
+                                                [ngStyle]="{'color': fontColorDashboard, 'font-size': fontSizeParagraph}" />
+                                        </div>
+                                        <div class="mb-5">
+                                            <label for="titleSizeUser"
+                                                class="block mb-2 text-sm font-medium  dark:text-white"
+                                                [ngStyle]="{'color': fontColorDashboard, 'font-size': fontSizeParagraph}">
+                                                Title Size
+                                            </label>
+                                            <input type="number" id="titleSizeUser" disabled
+                                                class="shadow-sm bg-gray-50 border border-gray-300  text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+                                                required #titleSizeUser
+                                                [ngStyle]="{'color': fontColorDashboard, 'font-size': fontSizeParagraph}" />
+                                        </div>
+                                        <button type="submit" (click)="saveChangesUser()"
+                                            [ngStyle]="{'color': fontColorBtnDashboardForm, 'background-color': btnBgDashboardForm, 'font-size': fontSizeParagraph}"
+                                            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Save
+                                            Changes
+                                        </button>
+                                    </form>
+
+                                    <div class="flex-col w-full h-auto items-center gap-1 mt-4" id="container-pallette">
+
+                                        <div id="triad" class="flex justify-between items-center gap-2 mb-1">
+
+                                            <label for="triada" class="font-bold text-sm text-center mr-1"
+                                                [ngStyle]="{'color': fontColorDashboard, 'font-size': fontSizeParagraph}">T
+                                            </label>
+
+                                            <div class="rounded w-[50px] h-[50px]  border-black border-x-4 border-y-4"
+                                                [ngStyle]="{'background-color': principalColorUserI}"></div>
+
+                                            <div class="rounded w-[50px] h-[50px]"
+                                                [ngStyle]="{'background-color': triad.t2}"></div>
+
+                                            <div class="rounded w-[50px] h-[50px] "
+                                                [ngStyle]="{'background-color': triad.t3 }">
+                                            </div>
+
+                                            <div class="rounded w-[50px] h-[50px]"
+                                                [ngStyle]="{'background-color': triad.t4 }">
+                                            </div>
+
+                                            <div class="rounded w-[50px] h-[50px]"
+                                                [ngStyle]="{'background-color': triad.t5 }">
+                                            </div>
+
+                                            <button type="submit" (click)="editPallet('triad')"
+                                                [ngStyle]="{'color': fontColorBtnDashboardForm, 'background-color': btnBgDashboardForm, 'font-size': fontSizeParagraph}"
+                                                class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Edit</button>
+                                        </div>
+
+                                        <div id="monochrome" class="flex justify-between items-center gap-2 mb-1">
+                                            <label for="monochrome" class="font-bold text-sm text-center"
+                                                [ngStyle]="{'color': fontColorDashboard, 'font-size': fontSizeParagraph}">M
+                                            </label>
+                                            <div class="rounded w-[50px] h-[50px]  border-black border-x-4 border-y-4"
+                                                [ngStyle]="{'background-color': principalColorUserI}"></div>
+
+                                            <div class="rounded w-[50px] h-[50px]"
+                                                [ngStyle]="{'background-color': monochrome.m2}"></div>
+
+                                            <div class="rounded w-[50px] h-[50px] "
+                                                [ngStyle]="{'background-color': monochrome.m3 }">
+                                            </div>
+
+                                            <div class="rounded w-[50px] h-[50px]"
+                                                [ngStyle]="{'background-color': monochrome.m4 }">
+                                            </div>
+
+                                            <div class="rounded w-[50px] h-[50px]"
+                                                [ngStyle]="{'background-color': monochrome.m5 }">
+                                            </div>
+
+                                            <button type="submit" (click)="editPallet('monochrome')"
+                                                [ngStyle]="{'color': fontColorBtnDashboardForm, 'background-color': btnBgDashboardForm, 'font-size': fontSizeParagraph}"
+                                                class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Edit</button>
+                                        </div>
+
+                                        <div id="complement" class="flex justify-between items-center gap-2 mb-1">
+                                            <label for="monochrome" class="font-bold text-sm text-center mr-1 "
+                                                [ngStyle]="{'color': fontColorDashboard, 'font-size': fontSizeParagraph}">A
+                                            </label>
+
+                                            <div class="rounded w-[50px] h-[50px] border-black border-x-4 border-y-4"
+                                                [ngStyle]="{'background-color': principalColorUserI}"></div>
+
+                                            <div class="rounded w-[50px] h-[50px]"
+                                                [ngStyle]="{'background-color': analogic.a2}"></div>
+
+                                            <div class="rounded w-[50px] h-[50px] "
+                                                [ngStyle]="{'background-color': analogic.a3 }">
+                                            </div>
+
+                                            <div class="rounded w-[50px] h-[50px]"
+                                                [ngStyle]="{'background-color': analogic.a4 }">
+                                            </div>
+
+                                            <div class="rounded w-[50px] h-[50px]"
+                                                [ngStyle]="{'background-color': analogic.a5 }">
+                                            </div>
+
+                                            <button type="submit" (click)="editPallet('analogic')"
+                                                [ngStyle]="{'color': fontColorBtnDashboardForm, 'background-color': btnBgDashboardForm, 'font-size': fontSizeParagraph}"
+                                                class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Edit</button>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+
+
+
+                            </div>
+
+                            }
                         </div>
                         <footer>
                             <p class="text-base text-gray-400 font-normal p-3 text-center">
@@ -356,7 +710,7 @@
         <!--end of project-->
     </main>
 
-
+    <script src="./js/color.js"></script>
 
 
 </body>
