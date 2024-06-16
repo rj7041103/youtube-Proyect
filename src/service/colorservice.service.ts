@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Scheme } from '../interfaces/ColorInterface';
-import { BehaviorSubject, Observable, map } from 'rxjs';
+import { BehaviorSubject, Observable, map, catchError, of } from 'rxjs';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 @Injectable({
   providedIn: 'root',
 })
@@ -19,14 +20,22 @@ export class ColorserviceService {
   typePalletColor: string = '';
 
   //new colors selected in user's interface
-  newPrincipalColor: string = '#7909DB';
+  /*  newPrincipalColor: string = '#7909DB';
   newSecundaryColor: string = '#5F3286';
   newNeutralBColor: string = '#171E26';
   newNeutralWColor: string = '#F2F2F2';
   newComplementColor: string = '#DB8B09';
-  newParagraphSizeUser: string = '12px';
-  newSubtitleSizeUser: string = '18px';
-  newTitleSizeUser: string = '24px';
+  newParagraphSizeUser: string = '14px';
+  newSubtitleSizeUser: string = '23.52px';
+  newTitleSizeUser: string = '39.52px'; */
+  newPrincipalColor: string = '';
+  newSecundaryColor: string = '';
+  newNeutralBColor: string = '';
+  newNeutralWColor: string = '';
+  newComplementColor: string = '';
+  newParagraphSizeUser: string = '';
+  newSubtitleSizeUser: string = '';
+  newTitleSizeUser: string = '';
 
   //new colors selected in dashboard's interface
   newPrincipalColorDashboard: string = '';
@@ -117,7 +126,10 @@ export class ColorserviceService {
     this.newComplementColor = newComplementColor;
   }
 
-  constructor(private serviceColor: HttpClient) {}
+  constructor(
+    private serviceColor: HttpClient,
+    private firestore: AngularFirestore,
+  ) {}
 
   getColorsT(): Observable<Scheme[]> {
     return this.serviceColor
@@ -135,5 +147,133 @@ export class ColorserviceService {
     return this.serviceColor
       .get<Scheme[]>(this.API_ColorC)
       .pipe(map((res) => res));
+  }
+
+  obtenerDatos(colorKey: string): Observable<string | null> {
+    console.log(`Intentando obtener el color ${colorKey}...`);
+    return this.firestore
+      .collection('dbUserColor')
+      .valueChanges()
+      .pipe(
+        map((documents) => {
+          if (documents.length > 0) {
+            const document: any = documents[1]; // Accede al primer (y único) documento en el array
+            // Busca la propiedad especificada por colorKey en el documento
+            const colorValue = document[colorKey];
+            if (colorValue !== undefined) {
+              console.log(`${colorKey}: ${colorValue}`);
+              return colorValue; // Retorna el valor del color especificado
+            } else {
+              console.log(`No se encontró el color ${colorKey}.`);
+              return null; // Retorna null si la clave no se encuentra
+            }
+          } else {
+            console.log('No se encontraron documentos.');
+            return null; // Retorna null si no hay documentos
+          }
+        }),
+        catchError((error) => {
+          console.error('Error obteniendo datos:', error);
+          return of(null); // Retorna null en caso de error
+        }),
+      );
+  }
+
+  getDataDashboard(colorKey: string): Observable<string | null> {
+    console.log(`Intentando obtener el color ${colorKey}...`);
+    return this.firestore
+      .collection('dbUserColor')
+      .valueChanges()
+      .pipe(
+        map((documents) => {
+          if (documents.length > 0) {
+            const document: any = documents[0]; // Accede al primer (y único) documento en el array
+            // Busca la propiedad especificada por colorKey en el documento
+            const colorValue = document[colorKey];
+            if (colorValue !== undefined) {
+              console.log(`${colorKey}: ${colorValue}`);
+              return colorValue; // Retorna el valor del color especificado
+            } else {
+              console.log(`No se encontró el color ${colorKey}.`);
+              return null; // Retorna null si la clave no se encuentra
+            }
+          } else {
+            console.log('No se encontraron documentos.');
+            return null; // Retorna null si no hay documentos
+          }
+        }),
+        catchError((error) => {
+          console.error('Error obteniendo datos:', error);
+          return of(null); // Retorna null en caso de error
+        }),
+      );
+  }
+
+  // En ColorserviceService
+
+  updateUserColors(
+    newPrincipalColor: string,
+    newSecundaryColor: string,
+    newNeutralBColor: string,
+    newNeutralWColor: string,
+    newComplementColor: string,
+    newParagraphSizeUser: string,
+    newSubtitleSizeUser: string,
+    newTitleSizeUser: string,
+  ): void {
+    const userRef = this.firestore
+      .collection('dbUserColor')
+      .doc('userPalletColor');
+
+    userRef
+      .update({
+        newPrincipalColor: newPrincipalColor,
+        newSecundaryColor: newSecundaryColor,
+        newNeutralBColor: newNeutralBColor,
+        newNeutralWColor: newNeutralWColor,
+        newComplementColor: newComplementColor,
+        newParagraphSizeUser: newParagraphSizeUser,
+        newSubtitleSizeUser: newSubtitleSizeUser,
+        newTitleSizeUser: newTitleSizeUser,
+      })
+      .then(() => {
+        console.log('Colores del usuario actualizados exitosamente');
+      })
+      .catch((error) => {
+        console.error('Error al actualizar los colores del usuario:', error);
+      });
+  }
+
+  updateDashboardColors(
+    principalColorDashboard: string,
+    secundaryColorDashboard: string,
+    fontColorDashboard: string,
+    btnBgDashboardForm: string,
+    fontColorBtnDashboardForm: string,
+    fontSizeParagraph: string,
+    fontSizeSubtitle: string,
+    fontSizeTitle: string,
+  ): void {
+    const userRef = this.firestore
+      .collection('dbUserColor')
+      .doc('dashboardPalletColor');
+
+    userRef
+      .update({
+        principalColorDashboard: principalColorDashboard,
+        secundaryColorDashboard: secundaryColorDashboard,
+        fontColorDashboard: fontColorDashboard,
+        btnBgDashboardForm: btnBgDashboardForm,
+        fontColorBtnDashboardForm: fontColorBtnDashboardForm,
+        fontSizeParagraph: fontSizeParagraph,
+        fontSizeSubtitle: fontSizeSubtitle,
+        fontSizeTitle: fontSizeTitle,
+      })
+      .then(() => {
+        console.log('Colores del dashboard actualizados exitosamente');
+      })
+      .catch((error) => {
+        console.error('Error al actualizar los colores del dashboard:', error);
+      });
   }
 }

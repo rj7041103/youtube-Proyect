@@ -157,10 +157,6 @@
                         <a [routerLink]="['/profile']" [ngStyle]="{'font-size':paragraphSizeUser}"
                             class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Profile</a>
                     </li>
-                    <li>
-                        <a [routerLink]="['']" [ngStyle]="{'font-size':paragraphSizeUser}"
-                            class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Services</a>
-                    </li>
 
                     <li>
                         <a [routerLink]="['/login']"
@@ -180,6 +176,14 @@
             class=" flex gallery justify-between items-center  relative  w-full z-50 p-5">
             <ng-template pTemplate="item" let-item>
                 <img [src]="item.itemImageSrc" style="width: 100%; display: block; height: 500px; "
+                    class="object-cover" />
+            </ng-template>
+            <ng-template pTemplate="item" let-item>
+                <img [src]="item.itemImageSrc" style="width: 100%; display: block; height: 500px;"
+                    class="object-cover" />
+            </ng-template>
+            <ng-template pTemplate="item" let-item>
+                <img [src]="item.itemImageSrc" style="width: 100%; display: block; height: 500px;"
                     class="object-cover" />
             </ng-template>
             <ng-template pTemplate="item" let-item>
@@ -213,18 +217,19 @@
                 class="max-w-2xl px-5 mt-2 text-3xl font-black leading-tight text-center text-gray-900 sm:mt-0 sm:px-0 sm:text-6xl">
                 Our Products</h3>
         </div>
-        <div class="flex gap-3 items-center justify-around mt-32 text-center">
+        <div class="flex gap-3 relative items-center justify-around mt-32 text-center">
             <div
                 class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                 <a href="#">
-                    <img class="p-8 rounded-t-lg" src="/docs/images/products/apple-watch.png" alt="product image" />
+                    <img class="p-8 rounded-t-lg object-contain" src="../../assets/images/servicesImg/producto1.jpg"
+                        alt="product image" />
                 </a>
                 <div class="px-5 pb-5">
                     <a href="#">
                         <h5 [ngStyle]="{'font-size': subtitleSizeUser,'color': principalUserColor }"
-                            class="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">Apple Watch
-                            Series 7
-                            GPS, Aluminium Case, Starlight Sport</h5>
+                            class="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">Samsung Galaxy
+                            A50 with pen
+                        </h5>
                     </a>
                     <div class="flex items-center mt-2.5 mb-5">
                         <div class="flex items-center space-x-1 rtl:space-x-reverse">
@@ -259,7 +264,7 @@
                     </div>
                     <div class="flex items-center justify-between">
                         <span [ngStyle]="{'font-size': titleSizeUser, 'color': neutralBUserColor}"
-                            class="text-3xl font-bold text-gray-900 dark:text-white">$599</span>
+                            class="text-3xl font-bold text-gray-900 dark:text-white">$320</span>
                         <a href="#"
                             class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                             [ngStyle]="{'background-color': complementUserColor, 'color':neutralWUserColor, 'font-size':paragraphSizeUser}">Add
@@ -269,9 +274,10 @@
             </div>
 
             <div
-                class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                class="w-full max-w-sm realtive justify-center items-center bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                 <a href="#">
-                    <img class="p-8 rounded-t-lg" src="/docs/images/products/apple-watch.png" alt="product image" />
+                    <img class="p-8 rounded-t-lg object-contain" src="../../assets/images/servicesImg/producto2.jpg"
+                        alt="product image" />
                 </a>
                 <div class="px-5 pb-5">
                     <a href="#">
@@ -323,16 +329,16 @@
             </div>
 
             <div
-                class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                class="w-full relative max-w-sm items-center justify-center bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                 <a href="#">
-                    <img class="p-8 rounded-t-lg" src="/docs/images/products/apple-watch.png" alt="product image" />
+                    <img class="p-8 rounded-t-lg object-contain" src="../../assets/images/servicesImg/producto3.jpg"
+                        alt="product image" />
                 </a>
                 <div class="px-5 pb-5">
                     <a href="#">
                         <h5 [ngStyle]="{'font-size': subtitleSizeUser,'color': principalUserColor }"
-                            class="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">Apple Watch
-                            Series 7
-                            GPS, Aluminium Case, Starlight Sport</h5>
+                            class="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">Azus Rog Sefirux
+                        </h5>
                     </a>
                     <div class="flex items-center mt-2.5 mb-5">
                         <div class="flex items-center space-x-1 rtl:space-x-reverse">
@@ -367,7 +373,7 @@
                     </div>
                     <div class="flex items-center justify-between">
                         <span [ngStyle]="{'font-size': titleSizeUser, 'color': neutralBUserColor}"
-                            class="text-3xl font-bold text-gray-900 dark:text-white">$599</span>
+                            class="text-3xl font-bold text-gray-900 dark:text-white">$2200</span>
                         <a href="#"
                             [ngStyle]="{'background-color': complementUserColor, 'color':neutralWUserColor, 'font-size':paragraphSizeUser}"
                             class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add

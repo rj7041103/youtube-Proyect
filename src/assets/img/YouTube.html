@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<!-- saved from url=(0022)http://127.0.0.1:5500/ -->
+<html lang="es"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./YouTube_files/style.css">
+    <title>YouTube</title>
+</head>
+<body>
+    <!-- header -->
+    <header class="header" id="header">
+        <div class="logo-bar">
+            <div class="container-nav" id="icono-bar">
+                <img src="./YouTube_files/menu--v1.png" class="nav-bar">
+            </div>
+
+            <img src="./YouTube_files/logo.png" alt="" class="logo">
+        </div>
+        <div class="center" id="center">
+            <div class="container-search">
+                <div class="icono">
+                    <img src="./YouTube_files/search--v1.png" class="icono">
+                </div>
+
+                <input type="text" placeholder="Buscar" id="buscar">
+                <div class="button-search">
+                    <img src="./YouTube_files/search--v1.png" class="">
+                </div>
+            </div>
+            <div class="container-micro">
+                <img src="./YouTube_files/microphone.png" class="micro">
+            </div>
+        </div>
+        <div class="end">
+            <div class="item" onmouseenter="bigItem(this)" onmouseleave="normalItem(this)">
+                <img src="./YouTube_files/video-call.png" class="camera">
+            </div>
+            <div class="item" onmouseenter="bigItem(this)" onmouseleave="normalItem(this)">
+                <img src="./YouTube_files/external-alarm-essential-ui-v2-creatype-outline-colourcreatype-2.png" class="notifications">
+            </div>
+            <img src="./YouTube_files/logoCanal.jpeg" alt="" class="logo-canal">
+        </div>
+    </header>
+
+    <section class="bar-lateral" id="bar-lateral" style="width: 70px;">
+        <div id="big-menu" class="ocultar">
+            <ul class="options">
+                <li>
+                    <a href="http://127.0.0.1:5500/#">
+                        <img src="./YouTube_files/home-page--v1.png">
+                        <span class="text">Inicio</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="http://127.0.0.1:5500/#">
+                        <img src="./YouTube_files/attach.png">
+                        <span class="text">Shorts</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="http://127.0.0.1:5500/#">
+                        <img src="./YouTube_files/video-playlist.png">
+                        <span class="text">Subscripciones</span>
+                    </a>
+                </li>
+                <hr>
+            </ul>
+    
+            <ul class="options" id="biblioteca">
+                <li>
+                    <a href="http://127.0.0.1:5500/#">
+                        <img src="./YouTube_files/personal-video-recorder-menu.png">
+                        <span class="text">Mi Biblioteca</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="http://127.0.0.1:5500/#">
+                        <img src="./YouTube_files/clock--v1.png">
+                        <span class="text">Historial</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="http://127.0.0.1:5500/#">
+                        <img src="./YouTube_files/external-youtube-multimedia-prettycons-lineal-prettycons.png">
+                        <span class="text">Mis Videos</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="http://127.0.0.1:5500/#">
+                        <img src="./YouTube_files/clock-add.png">
+                        <span class="text">Ver más tarde</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="http://127.0.0.1:5500/#">
+                        <img src="./YouTube_files/facebook-like--v1.png">
+                        <span class="text">Videos que me gustan</span>
+                    </a>
+                </li>
+                <hr>
+            </ul>
+            
+            <ul class="options" id="subscripciones">
+                <h3>Subscripciones</h3>
+                <li>
+                    <a href="http://127.0.0.1:5500/#">
+                        <img src="./YouTube_files/canal1.jpeg">
+                        <span class="text">Coderhouse</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="http://127.0.0.1:5500/#">
+                        <img src="./YouTube_files/canal2.jpeg">
+                        <span class="text">Plazti</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="http://127.0.0.1:5500/#">
+                        <img src="./YouTube_files/canal3.jpeg">
+                        <span class="text">Chess24 en Español</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="http://127.0.0.1:5500/#">
+                        <img src="./YouTube_files/canal4.jpeg">
+                        <span class="text">CNN</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="http://127.0.0.1:5500/#">
+                        <img src="./YouTube_files/canal5.jpeg">
+                        <span class="text">National Geographic</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="http://127.0.0.1:5500/#">
+                        <img src="./YouTube_files/canal6.jpeg">
+                        <span class="text">FreeCodeCamp.org</span>
+                    </a>
+                </li>
+                <hr>
+            </ul>
+            
+            <ul class="options" id="explorar">
+                <h3>Explorar</h3>
+                <li>
+                    <a href="http://127.0.0.1:5500/#">
+                        <img src="./YouTube_files/hotjar.png">
+                        <span class="text">Explorar</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="http://127.0.0.1:5500/#">
+                        <img src="./YouTube_files/music--v1.png">
+                        <span class="text">Música</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="http://127.0.0.1:5500/#">
+                        <img src="./YouTube_files/experimental-clapperboard-hatch.png">
+                        <span class="text">Películas</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="http://127.0.0.1:5500/#">
+                        <img src="./YouTube_files/youtube-live.png">
+                        <span class="text">En directo</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="http://127.0.0.1:5500/#">
+                        <img src="./YouTube_files/external-user-home-screen-apps-line-adri-ansyah-13.png">
+                        <span class="text">Video Juegos</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="http://127.0.0.1:5500/#">
+                        <img src="./YouTube_files/document-body.png">
+                        <span class="text">Noticias</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="http://127.0.0.1:5500/#">
+                        <img src="./YouTube_files/trophy--v1.png">
+                        <span class="text">Deportes</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="http://127.0.0.1:5500/#">
+                        <img src="./YouTube_files/light-on--v1.png">
+                        <span class="text">Aprendizaje</span>
+                    </a>
+                </li>
+                <hr>
+            </ul>
+            
+            <ul class="options" id="masyoutube">
+                <h3>Mas de YouTube</h3>
+                <li>
+                    <a href="http://127.0.0.1:5500/#">
+                        <img src="./YouTube_files/youtube-play.png">
+                        <span class="text">YouTube Premium</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="http://127.0.0.1:5500/#">
+                        <img src="./YouTube_files/youtube-studio.png">
+                        <span class="text">Creator Studio</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="http://127.0.0.1:5500/#">
+                        <img src="./YouTube_files/youtube-music.png">
+                        <span class="text">YouTube Music</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="http://127.0.0.1:5500/#">
+                        <img src="./YouTube_files/youtube-play--v1.png">
+                        <span class="text">YouTube Kids</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="http://127.0.0.1:5500/#">
+                        <img src="./YouTube_files/youtube-tv.png">
+                        <span class="text">YouTube TV</span>
+                    </a>
+                </li>
+            </ul>
+            <hr>
+            <ul class="options" id="config">
+                <li>
+                    <a href="http://127.0.0.1:5500/#">
+                        <img src="./YouTube_files/settings--v2.png">
+                        <span class="text">Configuración</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="http://127.0.0.1:5500/#">
+                        <img src="./YouTube_files/flag.png">
+                        <span class="text">Historial de denuncias</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="http://127.0.0.1:5500/#">
+                        <img src="./YouTube_files/external-Question-atm-others-inmotus-design.png">
+                        <span class="text">Ayuda</span>
+                    </a>
+                </li>
+                <hr>
+            </ul>
+            
+            <div class="links">
+                <a href="http://127.0.0.1:5500/#">Información</a>
+                <a href="http://127.0.0.1:5500/#">Prensa</a>
+                <a href="http://127.0.0.1:5500/#">Derechos de autor</a>
+                <a href="http://127.0.0.1:5500/#">Contactar</a>
+                <a href="http://127.0.0.1:5500/#">Creadores</a>
+                <a href="http://127.0.0.1:5500/#">Publicidad</a>
+                <a href="http://127.0.0.1:5500/#">Desarrolladores</a>
+            </div>
+            <div class="links">
+                <a href="http://127.0.0.1:5500/#">Términos</a>
+                <a href="http://127.0.0.1:5500/#">Privacidad</a>
+                <a href="http://127.0.0.1:5500/#">Pólitica y seguridad</a>
+                <a href="http://127.0.0.1:5500/#">Cómo funciona YouTube</a>
+                <a href="http://127.0.0.1:5500/#">Probar funciones nuevas</a>
+            </div>
+            <span class="google">© 2023 Google LLC</span>
+        </div>
+
+        <div id="little-menu" class="little-menu">
+            <ul class="options">
+                <li>
+                    <a href="http://127.0.0.1:5500/#">
+                        <img src="./YouTube_files/home-page--v1.png">
+                        <span class="text">Inicio</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="http://127.0.0.1:5500/#">
+                        <img src="./YouTube_files/attach.png">
+                        <span class="text">Shorts</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="http://127.0.0.1:5500/#">
+                        <img src="./YouTube_files/video-playlist.png">
+                        <span class="text">Subscripciones</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="http://127.0.0.1:5500/#">
+                        <img src="./YouTube_files/personal-video-recorder-menu.png">
+                        <span class="text">Mi Biblioteca</span>
+                    </a>
+                </li>
+                <hr>
+            </ul>
+        </div>
+
+    </section>
+    <section class="chips max-width-chips" id="chips">
+        <a href="http://127.0.0.1:5500/#">Todo</a>
+        <a href="http://127.0.0.1:5500/#">Mixes</a>
+        <a href="http://127.0.0.1:5500/#">Música</a>
+        <a href="http://127.0.0.1:5500/#">Video Juegos</a>
+        <a href="http://127.0.0.1:5500/#">Inteligencia Artificial</a>
+        <a href="http://127.0.0.1:5500/#">Senderismo</a>
+        <a href="http://127.0.0.1:5500/#">Gatos</a>
+        <a href="http://127.0.0.1:5500/#">Perros</a>
+        <a href="http://127.0.0.1:5500/#">Competiciones</a>
+    </section>
+    <section class="videos max-width-videos" id="videos">
+        <!-- items -->
+        <div class="contenedor-item">
+            <div class="item" onmouseenter="bigItem(this)" onmouseleave="normalItem(this)">
+                <div class="img-container">
+                    <img src="./YouTube_files/image-fill1.webp" alt="">
+                    <span class="time">15:00</span>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="img-channel">
+                            <img src="./YouTube_files/canal1.jpeg" alt="">
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="info">
+                            <h3><a href="http://127.0.0.1:5500/#">Chat GPT vs Google Bard, La Guerra de las IA (Google vs Microsoft)</a></h3>
+                            <a href="http://127.0.0.1:5500/#" class="name-channel">Coder</a>
+                            <div class="metadata">
+                                <span>122.000 visualizaciones</span>
+                                ●
+                                <span>Emitido hace 3 días</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="buttons-video" id="buttons-video">
+                    <button>
+                        <img src="./YouTube_files/clock--v1.png">
+                        Ver mas tarde
+                    </button>
+                    <button>
+                        <img src="./YouTube_files/video--v1.png">
+                        Añadir a la cola</button>
+                </div>
+            </div>
+        </div>
+        <div class="contenedor-item">
+            <div class="item" onmouseenter="bigItem(this)" onmouseleave="normalItem(this)">
+                <div class="img-container">
+                    <img src="./YouTube_files/image-fill1.webp" alt="">
+                    <span class="time">15:00</span>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="img-channel">
+                            <img src="./YouTube_files/canal1.jpeg" alt="">
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="info">
+                            <h3><a href="http://127.0.0.1:5500/#">Chat GPT vs Google Bard, La Guerra de las IA (Google vs Microsoft)</a></h3>
+                            <a href="http://127.0.0.1:5500/#" class="name-channel">Coder</a>
+                            <div class="metadata">
+                                <span>122.000 visualizaciones</span>
+                                ●
+                                <span>Emitido hace 3 días</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="buttons-video" id="buttons-video">
+                    <button>
+                        <img src="./YouTube_files/clock--v1.png">
+                        Ver mas tarde
+                    </button>
+                    <button>
+                        <img src="./YouTube_files/video--v1.png">
+                        Añadir a la cola</button>
+                </div>
+            </div>
+        </div>
+        <div class="contenedor-item">
+            <div class="item" onmouseenter="bigItem(this)" onmouseleave="normalItem(this)">
+                <div class="img-container">
+                    <img src="./YouTube_files/image-fill1.webp" alt="">
+                    <span class="time">15:00</span>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="img-channel">
+                            <img src="./YouTube_files/canal1.jpeg" alt="">
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="info">
+                            <h3><a href="http://127.0.0.1:5500/#">Chat GPT vs Google Bard, La Guerra de las IA (Google vs Microsoft)</a></h3>
+                            <a href="http://127.0.0.1:5500/#" class="name-channel">Coder</a>
+                            <div class="metadata">
+                                <span>122.000 visualizaciones</span>
+                                ●
+                                <span>Emitido hace 3 días</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="buttons-video" id="buttons-video">
+                    <button>
+                        <img src="./YouTube_files/clock--v1.png">
+                        Ver mas tarde
+                    </button>
+                    <button>
+                        <img src="./YouTube_files/video--v1.png">
+                        Añadir a la cola</button>
+                </div>
+            </div>
+        </div>
+        <div class="contenedor-item">
+            <div class="item" onmouseenter="bigItem(this)" onmouseleave="normalItem(this)">
+                <div class="img-container">
+                    <img src="./YouTube_files/image-fill1.webp" alt="">
+                    <span class="time">15:00</span>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="img-channel">
+                            <img src="./YouTube_files/canal1.jpeg" alt="">
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="info">
+                            <h3><a href="http://127.0.0.1:5500/#">Chat GPT vs Google Bard, La Guerra de las IA (Google vs Microsoft)</a></h3>
+                            <a href="http://127.0.0.1:5500/#" class="name-channel">Coder</a>
+                            <div class="metadata">
+                                <span>122.000 visualizaciones</span>
+                                ●
+                                <span>Emitido hace 3 días</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="buttons-video" id="buttons-video">
+                    <button>
+                        <img src="./YouTube_files/clock--v1.png">
+                        Ver mas tarde
+                    </button>
+                    <button>
+                        <img src="./YouTube_files/video--v1.png">
+                        Añadir a la cola</button>
+                </div>
+            </div>
+        </div>
+        <div class="contenedor-item">
+            <div class="item" onmouseenter="bigItem(this)" onmouseleave="normalItem(this)">
+                <div class="img-container">
+                    <img src="./YouTube_files/image-fill1.webp" alt="">
+                    <span class="time">15:00</span>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="img-channel">
+                            <img src="./YouTube_files/canal1.jpeg" alt="">
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="info">
+                            <h3><a href="http://127.0.0.1:5500/#">Chat GPT vs Google Bard, La Guerra de las IA (Google vs Microsoft)</a></h3>
+                            <a href="http://127.0.0.1:5500/#" class="name-channel">Coder</a>
+                            <div class="metadata">
+                                <span>122.000 visualizaciones</span>
+                                ●
+                                <span>Emitido hace 3 días</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="buttons-video" id="buttons-video">
+                    <button>
+                        <img src="./YouTube_files/clock--v1.png">
+                        Ver mas tarde
+                    </button>
+                    <button>
+                        <img src="./YouTube_files/video--v1.png">
+                        Añadir a la cola</button>
+                </div>
+            </div>
+        </div>
+        <div class="contenedor-item">
+            <div class="item" onmouseenter="bigItem(this)" onmouseleave="normalItem(this)">
+                <div class="img-container">
+                    <img src="./YouTube_files/image-fill1.webp" alt="">
+                    <span class="time">15:00</span>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="img-channel">
+                            <img src="./YouTube_files/canal1.jpeg" alt="">
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="info">
+                            <h3><a href="http://127.0.0.1:5500/#">Chat GPT vs Google Bard, La Guerra de las IA (Google vs Microsoft)</a></h3>
+                            <a href="http://127.0.0.1:5500/#" class="name-channel">Coder</a>
+                            <div class="metadata">
+                                <span>122.000 visualizaciones</span>
+                                ●
+                                <span>Emitido hace 3 días</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="buttons-video" id="buttons-video">
+                    <button>
+                        <img src="./YouTube_files/clock--v1.png">
+                        Ver mas tarde
+                    </button>
+                    <button>
+                        <img src="./YouTube_files/video--v1.png">
+                        Añadir a la cola</button>
+                </div>
+            </div>
+        </div>
+        <div class="contenedor-item">
+            <div class="item" onmouseenter="bigItem(this)" onmouseleave="normalItem(this)">
+                <div class="img-container">
+                    <img src="./YouTube_files/image-fill1.webp" alt="">
+                    <span class="time">15:00</span>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="img-channel">
+                            <img src="./YouTube_files/canal1.jpeg" alt="">
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="info">
+                            <h3><a href="http://127.0.0.1:5500/#">Chat GPT vs Google Bard, La Guerra de las IA (Google vs Microsoft)</a></h3>
+                            <a href="http://127.0.0.1:5500/#" class="name-channel">Coder</a>
+                            <div class="metadata">
+                                <span>122.000 visualizaciones</span>
+                                ●
+                                <span>Emitido hace 3 días</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="buttons-video" id="buttons-video">
+                    <button>
+                        <img src="./YouTube_files/clock--v1.png">
+                        Ver mas tarde
+                    </button>
+                    <button>
+                        <img src="./YouTube_files/video--v1.png">
+                        Añadir a la cola</button>
+                </div>
+            </div>
+        </div>
+        <div class="contenedor-item">
+            <div class="item" onmouseenter="bigItem(this)" onmouseleave="normalItem(this)">
+                <div class="img-container">
+                    <img src="./YouTube_files/image-fill1.webp" alt="">
+                    <span class="time">15:00</span>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="img-channel">
+                            <img src="./YouTube_files/canal1.jpeg" alt="">
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="info">
+                            <h3><a href="http://127.0.0.1:5500/#">Chat GPT vs Google Bard, La Guerra de las IA (Google vs Microsoft)</a></h3>
+                            <a href="http://127.0.0.1:5500/#" class="name-channel">Coder</a>
+                            <div class="metadata">
+                                <span>122.000 visualizaciones</span>
+                                ●
+                                <span>Emitido hace 3 días</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="buttons-video" id="buttons-video">
+                    <button>
+                        <img src="./YouTube_files/clock--v1.png">
+                        Ver mas tarde
+                    </button>
+                    <button>
+                        <img src="./YouTube_files/video--v1.png">
+                        Añadir a la cola</button>
+                </div>
+            </div>
+        </div>
+        <div class="contenedor-item">
+            <div class="item" onmouseenter="bigItem(this)" onmouseleave="normalItem(this)">
+                <div class="img-container">
+                    <img src="./YouTube_files/image-fill1.webp" alt="">
+                    <span class="time">15:00</span>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="img-channel">
+                            <img src="./YouTube_files/canal1.jpeg" alt="">
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="info">
+                            <h3><a href="http://127.0.0.1:5500/#">Chat GPT vs Google Bard, La Guerra de las IA (Google vs Microsoft)</a></h3>
+                            <a href="http://127.0.0.1:5500/#" class="name-channel">Coder</a>
+                            <div class="metadata">
+                                <span>122.000 visualizaciones</span>
+                                ●
+                                <span>Emitido hace 3 días</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="buttons-video" id="buttons-video">
+                    <button>
+                        <img src="./YouTube_files/clock--v1.png">
+                        Ver mas tarde
+                    </button>
+                    <button>
+                        <img src="./YouTube_files/video--v1.png">
+                        Añadir a la cola</button>
+                </div>
+            </div>
+        </div>
+        <div class="contenedor-item">
+            <div class="item" onmouseenter="bigItem(this)" onmouseleave="normalItem(this)">
+                <div class="img-container">
+                    <img src="./YouTube_files/image-fill1.webp" alt="">
+                    <span class="time">15:00</span>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="img-channel">
+                            <img src="./YouTube_files/canal1.jpeg" alt="">
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="info">
+                            <h3><a href="http://127.0.0.1:5500/#">Chat GPT vs Google Bard, La Guerra de las IA (Google vs Microsoft)</a></h3>
+                            <a href="http://127.0.0.1:5500/#" class="name-channel">Coder</a>
+                            <div class="metadata">
+                                <span>122.000 visualizaciones</span>
+                                ●
+                                <span>Emitido hace 3 días</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="buttons-video" id="buttons-video">
+                    <button>
+                        <img src="./YouTube_files/clock--v1.png">
+                        Ver mas tarde
+                    </button>
+                    <button>
+                        <img src="./YouTube_files/video--v1.png">
+                        Añadir a la cola</button>
+                </div>
+            </div>
+        </div>
+        <div class="contenedor-item">
+            <div class="item" onmouseenter="bigItem(this)" onmouseleave="normalItem(this)">
+                <div class="img-container">
+                    <img src="./YouTube_files/image-fill1.webp" alt="">
+                    <span class="time">15:00</span>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="img-channel">
+                            <img src="./YouTube_files/canal1.jpeg" alt="">
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="info">
+                            <h3><a href="http://127.0.0.1:5500/#">Chat GPT vs Google Bard, La Guerra de las IA (Google vs Microsoft)</a></h3>
+                            <a href="http://127.0.0.1:5500/#" class="name-channel">Coder</a>
+                            <div class="metadata">
+                                <span>122.000 visualizaciones</span>
+                                ●
+                                <span>Emitido hace 3 días</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="buttons-video" id="buttons-video">
+                    <button>
+                        <img src="./YouTube_files/clock--v1.png">
+                        Ver mas tarde
+                    </button>
+                    <button>
+                        <img src="./YouTube_files/video--v1.png">
+                        Añadir a la cola</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="./YouTube_files/app.js"></script>
+<!-- Code injected by live-server -->
+<script>
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script>
+
+</body></html>

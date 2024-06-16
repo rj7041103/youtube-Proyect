@@ -3,6 +3,8 @@ import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { AutoCompleteModule } from 'primeng/autocomplete';
 import { EstadoVenezuela } from '../../interfaces/EstadosVenezuela';
 import { AppserviceService } from '../../service/appservice.service';
+import { ColorserviceService } from '../../service/colorservice.service';
+import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-profile',
   standalone: true,
@@ -65,16 +67,71 @@ export class ProfileComponent {
     status: '',
   };
 
+  principalUserColor = '';
+  secundaryUserColor = '';
+  neutralBUserColor = '';
+  neutralWUserColor = '';
+  complementUserColor = '';
+  paragraphSizeUser = '';
+  subtitleSizeUser = '';
+  titleSizeUser = '';
+
   selectedState: string | null = null;
   selectedCity: string | null = null;
   // Lista filtrada que se mostrará en el componente <p-autoComplete>
   filteredStates: EstadoVenezuela[] = [];
   filteredCities: EstadoVenezuela[] = [];
-
+  private subscription: Subscription;
   constructor(
     private service: AppserviceService,
+    private serviceColor: ColorserviceService,
     private route: Router,
   ) {}
+
+  ngOnInit() {
+    this.subscription = this.serviceColor
+      .obtenerDatos('newPrincipalColor')
+      .subscribe((color) => {
+        this.principalUserColor = color;
+      });
+
+    this.subscription = this.serviceColor
+      .obtenerDatos('newSecundaryColor')
+      .subscribe((color) => {
+        this.secundaryUserColor = color;
+      });
+    this.subscription = this.serviceColor
+      .obtenerDatos('newNeutralBColor')
+      .subscribe((color) => {
+        this.neutralBUserColor = color;
+      });
+    this.subscription = this.serviceColor
+      .obtenerDatos('newNeutralWColor')
+      .subscribe((color) => {
+        this.neutralWUserColor = color;
+      });
+    this.subscription = this.serviceColor
+      .obtenerDatos('newComplementColor')
+      .subscribe((color) => {
+        this.complementUserColor = color;
+      });
+    this.subscription = this.serviceColor
+      .obtenerDatos('newParagraphSizeUser')
+      .subscribe((color) => {
+        this.paragraphSizeUser = color + 'px';
+      });
+    this.subscription = this.serviceColor
+      .obtenerDatos('newSubtitleSizeUser')
+      .subscribe((color) => {
+        this.subtitleSizeUser = color + 'px';
+      });
+    this.subscription = this.serviceColor
+      .obtenerDatos('newTitleSizeUser')
+      .subscribe((color) => {
+        this.titleSizeUser = color + 'px';
+      });
+  }
+
   filterStates(event: any): EstadoVenezuela[] {
     const query = event.query;
     this.filteredStates = this.arrVenezuela.filter((state) =>

@@ -2,6 +2,7 @@ import { Component, ElementRef, ViewChild, inject } from '@angular/core';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { AppserviceService } from '../../service/appservice.service';
 import { ColorserviceService } from '../../service/colorservice.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-register',
@@ -17,21 +18,64 @@ export class RegisterComponent {
 
   private serviceColor = inject(ColorserviceService);
 
-  principalUserColor = this.serviceColor.newPrincipalColor;
-  secundaryUserColor = this.serviceColor.newSecundaryColor;
-  neutralBUserColor = this.serviceColor.newNeutralBColor;
-  neutralWUserColor = this.serviceColor.newNeutralWColor;
-  complementUserColor = this.serviceColor.newComplementColor;
-  paragraphSizeUser = this.serviceColor.newParagraphSizeUser;
-  subtitleSizeUser = this.serviceColor.newSubtitleSizeUser;
-  titleSizeUser = this.serviceColor.newTitleSizeUser;
-
+  principalUserColor = '';
+  secundaryUserColor = '';
+  neutralBUserColor = '';
+  neutralWUserColor = '';
+  complementUserColor = '';
+  paragraphSizeUser = '';
+  subtitleSizeUser = '';
+  titleSizeUser = '';
+  private subscription: Subscription;
   constructor(
     private serviceApp: AppserviceService,
     private router: Router,
   ) {}
   login(user: any): void {
     this.serviceApp.login(user);
+  }
+
+  ngOnInit(): void {
+    this.subscription = this.serviceColor
+      .obtenerDatos('newPrincipalColor')
+      .subscribe((color) => {
+        this.principalUserColor = color;
+      });
+    this.subscription = this.serviceColor
+      .obtenerDatos('newSecundaryColor')
+      .subscribe((color) => {
+        this.secundaryUserColor = color;
+      });
+    this.subscription = this.serviceColor
+      .obtenerDatos('newNeutralBColor')
+      .subscribe((color) => {
+        this.neutralBUserColor = color;
+      });
+    this.subscription = this.serviceColor
+      .obtenerDatos('newNeutralWColor')
+      .subscribe((color) => {
+        this.neutralWUserColor = color;
+      });
+    this.subscription = this.serviceColor
+      .obtenerDatos('newComplementColor')
+      .subscribe((color) => {
+        this.complementUserColor = color;
+      });
+    this.subscription = this.serviceColor
+      .obtenerDatos('newParagraphSizeUser')
+      .subscribe((color) => {
+        this.paragraphSizeUser = color + 'px';
+      });
+    this.subscription = this.serviceColor
+      .obtenerDatos('newSubtitleSizeUser')
+      .subscribe((color) => {
+        this.subtitleSizeUser = color + 'px';
+      });
+    this.subscription = this.serviceColor
+      .obtenerDatos('newTitleSizeUser')
+      .subscribe((color) => {
+        this.titleSizeUser = color + 'px';
+      });
   }
 
   nextPage(): void {

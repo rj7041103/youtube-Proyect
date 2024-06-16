@@ -4,10 +4,16 @@ import { DashboardComponent } from '../components/dashboard/dashboard.component'
 import { RegisterComponent } from '../components/register/register.component';
 import { PrincipalComponent } from '../components/principal/principal.component';
 import { ProfileComponent } from '../components/profile/profile.component';
+import { YoutubeViewComponent } from '../components/youtube-view/youtube-view.component';
+import { VideoViewComponent } from '../components/video-view/video-view.component';
+import { CreateVideoComponent } from '../components/create-video/create-video.component';
 export const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'profile', component: ProfileComponent },
+  { path: 'youtube', component: YoutubeViewComponent },
+  { path: 'video', component: VideoViewComponent },
+  { path: 'create', component: CreateVideoComponent },
   { path: '', component: PrincipalComponent },
 ];

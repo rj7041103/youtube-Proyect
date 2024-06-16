@@ -19,7 +19,7 @@ import { AvatarModule } from 'primeng/avatar';
 import { AvatarGroupModule } from 'primeng/avatargroup';
 import { AppserviceService } from '../../service/appservice.service';
 import { User } from '../../interfaces/UserInterface';
-import { map, of, switchMap } from 'rxjs';
+import { map, of, switchMap, Subscription } from 'rxjs';
 import { AutoCompleteModule } from 'primeng/autocomplete';
 import { ButtonModule } from 'primeng/button';
 import { DialogModule } from 'primeng/dialog';
@@ -118,6 +118,7 @@ export class DashboardComponent {
   private service = inject(AppserviceService);
   private serviceColor = inject(ColorserviceService);
   private router = inject(Router);
+  private subscription: Subscription;
   users$ = this.service.getUsers();
   userlist!: any[];
   colorsT$: any;
@@ -173,15 +174,23 @@ export class DashboardComponent {
 
   //initial colors and sizes in dashboard
 
-  principalColorDashboard = '#FFFFFF';
+  /* principalColorDashboard = '#FFFFFF';
   secundaryColorDashboard = '#FCFCFC';
   fontColorDashboard = '#0F172A';
   btnBgDashboardForm = '#1A56DB';
   fontColorBtnDashboardForm = '#FFFFFF';
-  fontSizeTitle = '39.51px';
-  fontSizeSubtitle = '23.52px';
   fontSizeParagraph = '14px';
-
+  fontSizeSubtitle = '23.52px';
+  fontSizeTitle = '39.51px'; */
+  principalColorDashboard = '';
+  secundaryColorDashboard = '';
+  fontColorDashboard = '';
+  btnBgDashboardForm = '';
+  fontColorBtnDashboardForm = '';
+  fontSizeParagraph = '';
+  fontSizeSubtitle = '';
+  fontSizeTitle = '';
+  
   // initial colors and sizes in User interface
   principalColorUserI = '#FFFFFF';
   secundaryColorUserI = '#FFFFFF';
@@ -235,16 +244,44 @@ export class DashboardComponent {
   ngOnInit(): void {
     this.users$ = this.service.getUsers();
     this.users$.subscribe((users) => (this.userlist = users));
-
-    /* this.colorsT$ = this.serviceColor.getColorsT();
-    this.colorsT$.subscribe((colors: any) => (this.colorlistT = colors));
-
-    this.colorsM$ = this.serviceColor.getColorsM();
-    this.colorsM$.subscribe((colors: any) => (this.colorlistM = colors));
-
-    this.colorsC$ = this.serviceColor.getColorsC();
-    this.colorsC$.subscribe((colors: any) => (this.colorlistC = colors)); */
     this.principalColorUserI = this.serviceColor.analogic.principal;
+
+    this.subscription = this.serviceColor
+      .getDataDashboard('principalColorDashboard')
+      .subscribe((color) => {
+        this.principalColorDashboard = color;
+      });
+
+    this.subscription = this.serviceColor
+      .getDataDashboard('secundaryColorDashboard')
+      .subscribe((color) => {
+        this.secundaryColorDashboard = color;
+      });
+    this.subscription = this.serviceColor
+      .getDataDashboard('btnBgDashboardForm')
+      .subscribe((color) => {
+        this.btnBgDashboardForm = color;
+      });
+    this.subscription = this.serviceColor
+      .getDataDashboard('fontColorBtnDashboardForm')
+      .subscribe((color) => {
+        this.fontColorBtnDashboardForm = color;
+      });
+    this.subscription = this.serviceColor
+      .getDataDashboard('fontSizeParagraph')
+      .subscribe((color) => {
+        this.fontSizeParagraph = color;
+      });
+    this.subscription = this.serviceColor
+      .getDataDashboard('fontSizeSubtitle')
+      .subscribe((color) => {
+        this.fontSizeSubtitle = color;
+      });
+    this.subscription = this.serviceColor
+      .getDataDashboard('fontSizeTitle')
+      .subscribe((color) => {
+        this.fontSizeTitle = color;
+      });
   }
 
   //funcion de filtrado
@@ -343,96 +380,47 @@ export class DashboardComponent {
     this.router.navigateByUrl('/login');
   }
   saveChangesDashboard() {
-    this.serviceColor.newPrincipalColorDashboard = this.principalColorDashboard;
+    /* this.serviceColor.newPrincipalColorDashboard = this.principalColorDashboard;
     this.serviceColor.newSecundaryColorDashboard = this.secundaryColorDashboard;
+    this.serviceColor.fontColorDashboard = this.fontColorDashboard;
     this.serviceColor.newBtnBgColorFormDashboard = this.btnBgDashboardForm;
     this.serviceColor.newBtnFontColorFormDashboard =
       this.fontColorBtnDashboardForm;
     this.serviceColor.newParagraphSizeDashboard = this.fontSizeParagraph;
     this.serviceColor.newSubtitleSizeDashboard = this.fontSizeSubtitle;
-    this.serviceColor.newTitleSizeDashboard = this.fontSizeTitle;
-    this.serviceColor.fontColorDashboard = this.fontColorDashboard;
+    this.serviceColor.newTitleSizeDashboard = this.fontSizeTitle; */
+    if (this.paragraphsizeDashboard.nativeElement.value) {
+      this.serviceColor.updateDashboardColors(
+        this.principalColorDashboard,
+        this.secundaryColorDashboard,
+        this.fontColorDashboard,
+        this.btnBgDashboardForm,
+        this.fontColorBtnDashboardForm,
+        this.fontSizeParagraph,
+        this.fontSizeSubtitle,
+        this.fontSizeTitle,
+      );
+
+      alert('success data save');
+    } else {
+      alert('Please complete all inputs');
+    }
   }
   saveChangesUser() {
-    if (this.serviceColor.typePalletColor != '') {
-      switch (this.serviceColor.typePalletColor) {
-        case 'triad':
-          this.serviceColor.setPalletColorT(
-            this.principalColorUserI,
-            this.secundaryColorUserI,
-            this.neutralColorI1,
-            this.neutralColorI2,
-            this.complementColorUserI,
-          );
-          if (this.paragraphSizeUser.nativeElement.value) {
-            this.serviceColor.newParagraphSizeUser =
-              this.paragraphSizeUser.nativeElement.value;
-            this.serviceColor.newSubtitleSizeUser =
-              this.subtitleSizeUser.nativeElement.value;
-            this.serviceColor.newTitleSizeUser =
-              this.titleSizeUser.nativeElement.value;
-            alert('success data save');
-          } else {
-            alert('Please complete all inputs');
-          }
-
-          break;
-
-        case 'monochrome':
-          this.serviceColor.setPalletColorM(
-            this.principalColorUserI,
-            this.secundaryColorUserI,
-            this.neutralColorI1,
-            this.neutralColorI2,
-            this.complementColorUserI,
-          );
-          if (this.paragraphSizeUser.nativeElement.value) {
-            this.serviceColor.newParagraphSizeUser =
-              this.paragraphSizeUser.nativeElement.value;
-            this.serviceColor.newSubtitleSizeUser =
-              this.subtitleSizeUser.nativeElement.value;
-            this.serviceColor.newTitleSizeUser =
-              this.titleSizeUser.nativeElement.value;
-            alert('success data save');
-          } else {
-            alert('Please complete all inputs');
-          }
-
-          break;
-
-        case 'analogic':
-          this.serviceColor.setPalletColorA(
-            this.principalColorUserI,
-            this.secundaryColorUserI,
-            this.neutralColorI1,
-            this.neutralColorI2,
-            this.complementColorUserI,
-          );
-          if (this.paragraphSizeUser.nativeElement.value) {
-            this.serviceColor.newParagraphSizeUser =
-              this.paragraphSizeUser.nativeElement.value;
-            this.serviceColor.newSubtitleSizeUser =
-              this.subtitleSizeUser.nativeElement.value;
-            this.serviceColor.newTitleSizeUser =
-              this.titleSizeUser.nativeElement.value;
-            alert('success data save');
-          } else {
-            alert('Please complete all inputs');
-          }
-
-          break;
-      }
+    if (this.paragraphSizeUser.nativeElement.value) {
+      this.serviceColor.updateUserColors(
+        this.principalColorUserI,
+        this.secundaryColorUserI,
+        this.neutralColorI1,
+        this.neutralColorI2,
+        this.complementColorUserI,
+        this.paragraphSizeUser.nativeElement.value,
+        this.subtitleSizeUser.nativeElement.value,
+        this.titleSizeUser.nativeElement.value,
+      );
+      alert('success data save');
     } else {
-      if (this.paragraphSizeUser.nativeElement.value) {
-        this.serviceColor.newPrincipalColor = this.principalColorUserI;
-        this.serviceColor.newSecundaryColor = this.secundaryColorUserI;
-        this.serviceColor.newNeutralBColor = this.neutralColorI1;
-        this.serviceColor.newNeutralWColor = this.neutralColorI2;
-        this.serviceColor.newComplementColor = this.complementColorUserI;
-        alert('success data save');
-      } else {
-        alert('Please complete all inputs');
-      }
+      alert('Please complete all inputs');
     }
   }
   // section of Text size
@@ -481,50 +469,7 @@ export class DashboardComponent {
     }
   }
 
-  /*   colorPallet() {
-    // Limpiar las listas de colores previos
-    this.triad = { t1: '', t2: '', t3: '', t4: '', t5: '' };
-    this.monochrome = { m1: '', m2: '', m3: '', m4: '', m5: '' };
-    this.analogic = { a1: '', a2: '', a3: '', a4: '', a5: '' };
-    let cantColorsTriad = [];
-    let cantColorsMonochrome = [];
-    let cantColorsAnalogic = [];
-
-    // Obtener la paleta de colores para el modo especificado
-
-    if (this.colorlistT && this.colorlistT.colors) {
-      this.colorlistT.colors.forEach((element: Color) => {
-        cantColorsTriad.push(element.hex.value);
-        this.triad.t1 = cantColorsTriad[0];
-        this.triad.t2 = cantColorsTriad[1];
-        this.triad.t3 = cantColorsTriad[2];
-        this.triad.t4 = cantColorsTriad[3];
-        console.log(cantColorsTriad);
-      });
-    }
-
-    if (this.colorlistM && this.colorlistM.colors) {
-      this.colorlistM.colors.forEach((element: Color) => {
-        cantColorsMonochrome.push(element.hex.value);
-        this.monochrome.m1 = cantColorsMonochrome[0];
-        this.monochrome.m2 = cantColorsMonochrome[1];
-        this.monochrome.m3 = cantColorsMonochrome[2];
-        this.monochrome.m4 = cantColorsMonochrome[3];
-        console.log(cantColorsMonochrome);
-      });
-    }
-
-    if (this.colorlistC && this.colorlistC.colors) {
-      this.colorlistC.colors.forEach((element: Color) => {
-        cantColorsAnalogic.push(element.hex.value);
-        this.analogic.a1 = cantColorsAnalogic[0];
-        this.analogic.a2 = cantColorsAnalogic[1];
-        this.analogic.a3 = cantColorsAnalogic[2];
-        this.analogic.a4 = cantColorsAnalogic[3];
-        console.log(cantColorsAnalogic);
-      });
-    }
-  } */
+  0
 
   colorPallet() {}
 
@@ -558,36 +503,6 @@ export class DashboardComponent {
         break;
     }
 
-    /*     switch (typeMode) {
-      case 'triad':
-        
-        break;
-
-      case 'monochrome':
-        this.principalColorUser.nativeElement.value =
-          this.serviceColor.monochrome.principal;
-        this.secundaryColorUser.nativeElement.value =
-          this.serviceColor.monochrome.secundary;
-        this.neutralColor1.nativeElement.value =
-          this.serviceColor.monochrome.neutralB;
-        this.neutralColor2.nativeElement.value =
-          this.serviceColor.monochrome.neutralW;
-        this.complementColorUser.nativeElement.value =
-          this.serviceColor.monochrome.complement;
-        break;
-
-      case 'analogic':
-        this.principalColorUser.nativeElement.value =
-          this.serviceColor.analogic.principal;
-        this.secundaryColorUser.nativeElement.value =
-          this.serviceColor.analogic.secundary;
-        this.neutralColor1.nativeElement.value =
-          this.serviceColor.analogic.neutralB;
-        this.neutralColor2.nativeElement.value =
-          this.serviceColor.analogic.neutralW;
-        this.complementColorUser.nativeElement.value =
-          this.serviceColor.analogic.complement;
-        break;
-    } */
+    
   }
 }

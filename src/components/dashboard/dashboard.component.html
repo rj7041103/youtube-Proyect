@@ -121,21 +121,26 @@
                             <!-- ========== END HEADER ========== -->
                         </header>
 
-                        <div class="flex h-auto  justify-start items-center p-3  ">
+                        <div [style]="{'background-color': principalColorDashboard}"
+                            class="flex h-auto  justify-start items-center p-3  ">
                             <p-dialog [id]="idUser" header="Header" [modal]="true" #dialog
-                                [style]="{ width: '500px', height: '500px',zIndex: 999 }" [(visible)]="showDialog">
+                                [style]="{ width: '500px', height: '500px',zIndex: 999, 'background-color': principalColorDashboard }"
+                                [(visible)]="showDialog">
                                 <ng-template pTemplate="header">
                                     <div class="inline-flex align-items-center justify-content-center gap-2">
                                         <p-avatar [image]="imageAvatar" shape="circle" />
-                                        <span class="font-bold white-space-nowrap">
+                                        <span [style]="{'color':fontColorDashboard, 'font-size':fontSizeParagraph}"
+                                            class="font-bold white-space-nowrap">
                                             {{nameBadgedAvatar}}
                                         </span>
                                     </div>
                                 </ng-template>
-                                <span class="p-text-secondary block mb-5">Update your
+                                <span [style]="{'color':fontColorDashboard, 'font-size':fontSizeParagraph}"
+                                    class="p-text-secondary block mb-5">Update your
                                     information.</span>
                                 <div class="flex relative items-center justify-around gap-2 mb-4">
-                                    <label for="userimg" class="font-semibold w-6rem">
+                                    <label [style]="{'color':fontColorDashboard, 'font-size':fontSizeParagraph}"
+                                        for="userimg" class="font-semibold w-6rem">
                                         Image
                                     </label>
                                     <input pInputText id="img"
@@ -143,7 +148,8 @@
                                         type="file" accept="image/jpeg, image/jpg, image/png" />
                                 </div>
                                 <div class="flex relative items-center justify-around gap-2 mb-4">
-                                    <label for="username" class="font-semibold w-6rem">
+                                    <label [style]="{'color':fontColorDashboard, 'font-size':fontSizeParagraph}"
+                                        for="username" class="font-semibold w-6rem">
                                         Name
                                     </label>
                                     <input pInputText id="name"
@@ -151,48 +157,57 @@
                                         autocomplete="on" type="text" minlength="3" #name />
                                 </div>
                                 <div class="flex relative items-center justify-start gap-2 mb-4">
-                                    <label for="userlastname" class="font-semibold w-6rem">
+                                    <label [style]="{'color':fontColorDashboard, 'font-size':fontSizeParagraph}"
+                                        for="userlastname" class="font-semibold w-6rem">
                                         Lastname
                                     </label>
                                     <input pInputText id="lastname" class=" flex-auto rounded-md" autocomplete="on"
                                         type="text" minlength="3" #lastname />
                                 </div>
                                 <div class="flex relative items-center justify-around gap-2 mb-4">
-                                    <label for="ci" class="font-semibold w-6rem">CI</label>
+                                    <label [style]="{'color':fontColorDashboard, 'font-size':fontSizeParagraph}"
+                                        for="ci" class="font-semibold w-6rem">CI</label>
                                     <input pInputText id="ci" class="flex-auto rounded-md" autocomplete="on"
                                         type="number" maxlength="8" pattern="/^\d+$/" #ci />
                                 </div>
                                 <div class="flex relative items-center justify-around gap-2 mb-4">
-                                    <label for="email" class="font-semibold w-6rem">Email</label>
+                                    <label [style]="{'color':fontColorDashboard, 'font-size':fontSizeParagraph}"
+                                        for="email" class="font-semibold w-6rem">Email</label>
                                     <input pInputText id="email" class="flex-auto rounded-md" autocomplete="on"
                                         type="email" minlength="10" #email />
                                 </div>
                                 <div class="flex relative items-center justify-around gap-2 mb-4">
-                                    <label for="phone" class="font-semibold w-6rem">Phone</label>
+                                    <label [style]="{'color':fontColorDashboard, 'font-size':fontSizeParagraph}"
+                                        for="phone" class="font-semibold w-6rem">Phone</label>
                                     <input pInputText id="phone" class="flex-auto rounded-md" autocomplete="on"
                                         type="number" minlength="3" #phone />
                                 </div>
                                 <div class="flex relative items-center justify-around gap-2 mb-4">
-                                    <label for="address" class="font-semibold w-6rem">Address</label>
+                                    <label [style]="{'color':fontColorDashboard, 'font-size':fontSizeParagraph}"
+                                        for="address" class="font-semibold w-6rem">Address</label>
                                     <input pInputText id="address" class="flex-auto rounded-md" autocomplete="on"
                                         type="text" minlength="3" #address />
                                 </div>
                                 <div class="flex relative items-center justify-around gap-2 mb-4">
-                                    <label for="state" class="font-semibold w-6rem">State</label>
+                                    <label [style]="{'color':fontColorDashboard, 'font-size':fontSizeParagraph}"
+                                        for="state" class="font-semibold w-6rem">State</label>
                                     <input pInputText id="state" class="flex-auto rounded-md" autocomplete="on"
                                         type="text" minlength="3" #state />
                                 </div>
                                 <div class="flex relative items-center justify-around gap-2 mb-4">
-                                    <label for="city" class="font-semibold w-6rem">City</label>
+                                    <label [style]="{'color':fontColorDashboard, 'font-size':fontSizeParagraph}"
+                                        for="city" class="font-semibold w-6rem">City</label>
                                     <input pInputText id="city" class="flex-auto rounded-md" autocomplete="on"
                                         type="text" minlength="3" #city />
                                 </div>
                                 <ng-template pTemplate="footer" class="flex justify-end gap-2">
                                     <button
                                         class=" bg-[#3B82F6] mr-3 text-neutral-100 active:-scale-[0.9] rounded-md p-[5px]"
+                                        [style]="{'color':fontColorBtnDashboardForm, 'font-size':fontSizeParagraph, 'background-color':btnBgDashboardForm}"
                                         (click)="postUser(idUser)">Save</button>
                                     <button
-                                        class="active:border-sky-500 mr-3 active:-scale-[0.9] text-gray-800 rounded-md"
+                                        [style]="{'color':fontColorBtnDashboardForm, 'font-size':fontSizeParagraph, 'background-color':btnBgDashboardForm}"
+                                        class="active:border-sky-500 mr-3 active:-scale-[0.9] text-gray-800 rounded-md p-1"
                                         (click)="toggleModal()">Cancel</button>
                                 </ng-template>
                             </p-dialog>
